@@ -33,7 +33,7 @@ namespace AcornPad
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaletteEdit));
             this.PaletteGroupBox = new System.Windows.Forms.GroupBox();
-            this.beebPalette1 = new AcornPad.Controls.BeebPalette();
+            this.beebPalette1 = new AcornPad.Controls.AcornPalette();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -283,6 +283,6 @@ namespace AcornPad
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown MapNumericUpDown;
         private System.Windows.Forms.ComboBox MapsComboBox;
-        private BeebPalette beebPalette1;
+        private AcornPalette beebPalette1;
     }
 }

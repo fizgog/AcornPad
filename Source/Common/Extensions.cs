@@ -58,7 +58,10 @@ namespace AcornPad
 
             RectangleF cloneRect = new RectangleF(xOffset, yOffset, Image.Width - xOffset, Image.Height - yOffset);
 
-            Bitmap newImage = Image.Clone(cloneRect, Image.PixelFormat);
+            //Bitmap newImage = Image.Clone(cloneRect, Image.PixelFormat);
+            Bitmap cloneImage = Image.Clone(cloneRect, Image.PixelFormat);
+
+            Bitmap newImage = new Bitmap(cloneImage);
 
             Rectangle rect = new Rectangle(0, 0, newImage.Width, newImage.Height);
             BitmapData bmpData = newImage.LockBits(rect, ImageLockMode.ReadWrite, newImage.PixelFormat);
@@ -113,7 +116,7 @@ namespace AcornPad
         /// <param name="xOffset"></param>
         /// <param name="yOffset"></param>
         /// <returns></returns>
-        public static Bitmap ImageToAcorn(this Bitmap Image, Palette palette, int conv, int xOffset = 0, int yOffset = 0)
+        public static Bitmap ImageToAcorn(this Bitmap Image, Palette palette, int conv, int xOffset, int yOffset)
         {
             RectangleF cloneRect = new RectangleF(xOffset, yOffset, Image.Width - xOffset, Image.Height - yOffset);
 

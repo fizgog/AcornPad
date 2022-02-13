@@ -489,7 +489,7 @@ namespace AcornPad.Controls
 
                 for (int x = 0; x < ImageSize.Width; x++)
                 {
-                    int cellData = project.Maps.Items[0].GetCellValue(x, y);
+                    int cellData = project.Maps.Items[project.Maps.SelectedItem].GetCellValue(x, y);
 
                     if (cellData != -1)
                     {

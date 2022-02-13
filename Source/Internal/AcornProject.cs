@@ -328,11 +328,14 @@ namespace AcornPad
                 case DataType.Char:
                     AddHistory("Paste Character");
                     Chars.Paste("CharImage");
+                    RemapSetToMap(Chars);
                     break;
 
                 case DataType.Tile:
                     AddHistory("Paste Tile");
                     Tiles.Paste("TileImage");
+                        RemapSetToMap(Tiles);
+                
                     break;
 
                 case DataType.Map:
@@ -341,6 +344,22 @@ namespace AcornPad
                     break;
 
                 default: throw new System.Exception("Unknown image data type.");
+            }
+        }
+
+        public void RemapSetToMap(ImageDataArray imgArray)
+        {
+            for (int i = 0; i < imgArray.Count; i++)
+            {
+                imgArray.Items[i].Id = i;
+            }
+            for (int i = 0; i < Maps.Area; i++)
+            {
+                int value = Maps.Items[Maps.SelectedItem].Data[i];
+                if (value >= imgArray.SelectedItem)
+                { 
+                    Maps.Items[Maps.SelectedItem].Data[i] = value+1;
+                }
             }
         }
 
@@ -364,7 +383,7 @@ namespace AcornPad
         /// Compress character or tile set into the least amount of items
         /// </summary>
         /// <param name="imgArray"></param>
-        public void CompressData(ImageDataArray imgArray)
+        public void CompressData(ImageDataArray imgArray, bool TilesOnLine)
         {
             if (imgArray.Count < 2) return;
 
@@ -377,18 +396,41 @@ namespace AcornPad
                     {
                         int newValue = imgArray.Items[i].Id;
                         int oldValue = imgArray.Items[j].Id;
-                        Maps.Items[Maps.SelectedItem].RemapData(oldValue, newValue);
+
+                        if (imgArray.ImageDataType == DataType.Char && TilesOnline)
+                        {
+                            for(int k=0; k < Tiles.Count; k++)
+                            { 
+                                Tiles.Items[k].RemapData(oldValue,newValue);
+                            }
+                        }
+                        else
+                        { 
+                            Maps.Items[Maps.SelectedItem].RemapData(oldValue, newValue);
+                        }
+
                         imgArray.Items.RemoveAt(j);
                         j--;
                     }
                 }
             }
-
+            
             // Reset the id to the index
             for (int i = 0; i < imgArray.Count; i++)
             {
                 int oldValue = imgArray.Items[i].Id;
-                Maps.Items[Maps.SelectedItem].RemapData(oldValue, i);
+
+                if ((imgArray.ImageDataType == DataType.Char && TilesOnline))
+                {
+                    for (int k = 0; k < Tiles.Count; k++)
+                    {
+                        Tiles.Items[k].RemapData(oldValue, i);
+                    }
+                }
+                else 
+                { 
+                    Maps.Items[Maps.SelectedItem].RemapData(oldValue, i);
+                }
                 imgArray.Items[i].Id = i;
             }
 
@@ -426,7 +468,7 @@ namespace AcornPad
 
             Maps = newMap;
 
-            CompressData(Chars);
+            CompressData(Chars, false);
         }
 
         /// <summary>
@@ -472,7 +514,7 @@ namespace AcornPad
 
             Tiles.SelectedItem = Tiles.Count >= 1 ? 1 : 0;
 
-            CompressData(Tiles);
+            CompressData(Tiles, true);
         }
     }
 }

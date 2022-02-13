@@ -343,7 +343,7 @@ namespace AcornPad.Forms
             Project.NumberOfMaps = 1;
 
             // Compress the data
-            Project.CompressData(Project.Chars);
+            Project.CompressData(Project.Chars, Project.TilesOnline);
 
             BeginInvoke(new Action(() => ThreadCreateComplete()));
         }

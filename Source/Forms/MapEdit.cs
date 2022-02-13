@@ -288,7 +288,14 @@ namespace AcornPad.Forms
                                 break;
 
                             case 3: // Picker
-                                Project.Chars.SelectedItem = oldValue;
+                                if (Project.TilesOnline)
+                                {
+                                    Project.Tiles.SelectedItem = oldValue;
+                                }
+                                else
+                                {
+                                     Project.Chars.SelectedItem = oldValue;
+                                }
                                 break;
 
                             default: throw new Exception("Invalid paint tool.");

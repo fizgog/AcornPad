@@ -296,7 +296,7 @@ namespace AcornPad.Forms
         private void ButtonCompress_Click(object sender, EventArgs e)
         {
             Project.AddHistory("Compress Character");
-            Project.CompressData(Project.Chars);
+            Project.CompressData(Project.Chars, Project.TilesOnline);
             CharSet_ImageChanged?.Invoke(this, e);
         }
     }

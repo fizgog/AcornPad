@@ -224,7 +224,8 @@ namespace AcornPad
             if (CanPaste(format))
             {
                 ImageData item = (ImageData)Clipboard.GetData(format);
-                Items.Insert(SelectedItem, item);
+                //item.Id = Items.Count;
+                Items.Insert(SelectedItem, item);   
             }
         }
 

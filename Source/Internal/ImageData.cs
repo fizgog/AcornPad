@@ -281,7 +281,8 @@ namespace AcornPad
             if (Data != null && (index >= 0 && index < Count) && Data[index] != (byte)value)
             {
                 int oldValue = Data[index];
-                FloodFillExt(x, y, oldValue, value);
+                if (oldValue != value)
+                    FloodFillExt(x, y, oldValue, value);
             }
         }
 

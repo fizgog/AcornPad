@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="780816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="781328">
       <assemblyIdentity name="AcornPad" version="1.0.4.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZyDdD099VfUz6PvbNwATd+ObeLgzBkiTGxoOcK259/g=</dsig:DigestValue>
+        <dsig:DigestValue>SeeqHr5UULeHNpZcvUNLOnZJoTpBXc503XZ44wJUlHg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -132,13 +132,13 @@
       <dsig:DigestValue>lP/NBl3eG/Knt4uAAbnDFZ+Kn/2VzeRaXz9+hlbfYYE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ReleaseNotes.html" size="3114">
+  <file name="ReleaseNotes.html" size="3523">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qmRzy4piLWJJVYWfMvll9YCoDVp2VQjv2FzSnBjoR3w=</dsig:DigestValue>
+      <dsig:DigestValue>+HxNpE3tu12DR6BzWox2DgPUwB5KfCfCGNyvklcCzQM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\brush.png" size="301">

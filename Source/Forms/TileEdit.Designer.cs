@@ -38,10 +38,11 @@ namespace AcornPad.Forms
             this.ButtonPen = new System.Windows.Forms.ToolStripButton();
             this.ButtonBrush = new System.Windows.Forms.ToolStripButton();
             this.ButtonFloodFill = new System.Windows.Forms.ToolStripButton();
+            this.ButtonPicker = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -54,7 +55,7 @@ namespace AcornPad.Forms
             this.ShiftUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShiftDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageBox1 = new AcornPad.Controls.ImageBox();
-            this.ButtonPicker = new System.Windows.Forms.ToolStripButton();
+            this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -148,6 +149,15 @@ namespace AcornPad.Forms
             this.ButtonFloodFill.Size = new System.Drawing.Size(23, 22);
             this.ButtonFloodFill.Text = "Flood Fill";
             // 
+            // ButtonPicker
+            // 
+            this.ButtonPicker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonPicker.Image = global::AcornPad.Properties.Resources.ColourPicker;
+            this.ButtonPicker.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonPicker.Name = "ButtonPicker";
+            this.ButtonPicker.Size = new System.Drawing.Size(23, 22);
+            this.ButtonPicker.Text = "Picker";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
@@ -155,7 +165,8 @@ namespace AcornPad.Forms
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel1,
             this.StatusLabel2,
-            this.StatusLabel3});
+            this.StatusLabel3,
+            this.StatusLabel4});
             this.statusStrip1.Location = new System.Drawing.Point(0, 378);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(400, 22);
@@ -165,24 +176,23 @@ namespace AcornPad.Forms
             // StatusLabel1
             // 
             this.StatusLabel1.Name = "StatusLabel1";
-            this.StatusLabel1.Size = new System.Drawing.Size(304, 17);
-            this.StatusLabel1.Spring = true;
+            this.StatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.StatusLabel1.Text = "Ready";
             this.StatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // StatusLabel2
-            // 
-            this.StatusLabel2.Name = "StatusLabel2";
-            this.StatusLabel2.Size = new System.Drawing.Size(42, 17);
-            this.StatusLabel2.Text = "Char #";
-            this.StatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // StatusLabel3
             // 
             this.StatusLabel3.Name = "StatusLabel3";
-            this.StatusLabel3.Size = new System.Drawing.Size(39, 17);
-            this.StatusLabel3.Text = "Zoom";
+            this.StatusLabel3.Size = new System.Drawing.Size(35, 17);
+            this.StatusLabel3.Text = "Tile #";
             this.StatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // StatusLabel4
+            // 
+            this.StatusLabel4.Name = "StatusLabel4";
+            this.StatusLabel4.Size = new System.Drawing.Size(39, 17);
+            this.StatusLabel4.Text = "Zoom";
+            this.StatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // menuStrip1
             // 
@@ -297,14 +307,13 @@ namespace AcornPad.Forms
             this.ImageBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseMove);
             this.ImageBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseUp);
             // 
-            // ButtonPicker
+            // StatusLabel2
             // 
-            this.ButtonPicker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ButtonPicker.Image = global::AcornPad.Properties.Resources.ColourPicker;
-            this.ButtonPicker.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonPicker.Name = "ButtonPicker";
-            this.ButtonPicker.Size = new System.Drawing.Size(23, 22);
-            this.ButtonPicker.Text = "Picker";
+            this.StatusLabel2.Name = "StatusLabel2";
+            this.StatusLabel2.Size = new System.Drawing.Size(272, 17);
+            this.StatusLabel2.Spring = true;
+            this.StatusLabel2.Text = "Char #";
+            this.StatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TileEdit
             // 
@@ -345,8 +354,8 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripButton ButtonFloodFill;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel4;
         private Controls.ImageBox ImageBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -360,5 +369,6 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripMenuItem ShiftUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShiftDownToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton ButtonPicker;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel2;
     }
 }

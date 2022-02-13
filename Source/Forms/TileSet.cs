@@ -42,7 +42,7 @@ namespace AcornPad.Forms
             ToolStripSplitButton1.Text = String.Format("{0} x {1}", ToolStripTable1.TableControl.SelectedSize.Width, ToolStripTable1.TableControl.SelectedSize.Height);
 
             StatusLabel1.Text = "Ready";
-            StatusLabel2.Text = string.Format("{0} Cells", Project.Tiles.TotalBytes);
+            StatusLabel2.Text = string.Format("{0} Bytes", Project.Tiles.TotalBytes);
             StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
@@ -336,7 +336,7 @@ namespace AcornPad.Forms
         private void ButtonCompress_Click(object sender, EventArgs e)
         {
             Project.AddHistory("Compress Tiles");
-            Project.CompressData(Project.Tiles);
+            Project.CompressData(Project.Tiles, Project.TilesOnline);
             TileSet_ImageChanged?.Invoke(this, e);
         }
     }

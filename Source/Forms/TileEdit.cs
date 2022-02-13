@@ -36,9 +36,9 @@ namespace AcornPad.Forms
             ImageBox1.GridTileSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
 
             StatusLabel1.Text = "Ready";
-
-            StatusLabel2.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel2.Text = "";
+            StatusLabel3.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace AcornPad.Forms
                 ImageBox1.ImageSize = new System.Drawing.Size(width, height);
 
                 ImageBox1.DrawBitmapTile(Project);
-                StatusLabel2.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
+                StatusLabel3.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
             }
 
             base.Invalidate();
@@ -208,7 +208,7 @@ namespace AcornPad.Forms
         {
             ImageBox1.ZoomFactor += value;
             Project.TileEditForm.ZoomFactor = ImageBox1.ZoomFactor;
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>
@@ -270,7 +270,10 @@ namespace AcornPad.Forms
                 int xPos = ImageBox1.ScrollTileX(e.X);
                 int yPos = ImageBox1.ScrollTileY(e.Y);
 
+                int CharXY = Project.Tiles.Items[Project.Tiles.SelectedItem].GetCellValue(xPos, yPos);
+
                 StatusLabel1.Text = string.Format("({0},{1})", xPos, yPos);
+                StatusLabel2.Text = (CharXY != -1) ? string.Format("Char {0} (${0:X2})", CharXY) : "";
 
                 if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
                 {

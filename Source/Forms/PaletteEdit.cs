@@ -37,7 +37,7 @@ namespace AcornPad
 
             beebPalette1.MachineType = (Project.Machine.MachineType == "Acorn Atom") ? Common.MachineType.Atom : Common.MachineType.BBC;
 
-            beebPalette1.AcornPalette = Project.Palette;
+            beebPalette1.Palette = Project.Palette;
             beebPalette1.SetColourMode(false, Project.Palette.ColourSet);
             //beebPalette1.AcornPalette.NumColours = Project.Machine.NumColours;
 
@@ -108,12 +108,12 @@ namespace AcornPad
         /// <param name="e"></param>
         private void BeebPalette1_ColourChanged(object sender, EventArgs e)
         {
-            Project.Palette.AcornColourSet1 = beebPalette1.AcornPalette.AcornColourSet1;
-            Project.Palette.AcornColourSet2 = beebPalette1.AcornPalette.AcornColourSet2;
+            Project.Palette.AcornColourSet1 = beebPalette1.Palette.AcornColourSet1;
+            Project.Palette.AcornColourSet2 = beebPalette1.Palette.AcornColourSet2;
 
-            Project.Palette.WinColours = beebPalette1.AcornPalette.WinColours;
-            Project.Palette.DrawColour = beebPalette1.AcornPalette.DrawColour;
-            Project.Palette.EraseColour = beebPalette1.AcornPalette.EraseColour;
+            Project.Palette.WinColours = beebPalette1.Palette.WinColours;
+            Project.Palette.DrawColour = beebPalette1.Palette.DrawColour;
+            Project.Palette.EraseColour = beebPalette1.Palette.EraseColour;
 
             PaletteChanged?.Invoke(this, e);
         }
