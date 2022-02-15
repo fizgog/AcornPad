@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AcornPad.Forms
@@ -38,7 +39,8 @@ namespace AcornPad.Forms
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = "";
             StatusLabel3.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
-            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel4.Text = string.Format("Used {0}", Project.Usage(Project.Tiles));
+            StatusLabel5.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>
@@ -157,6 +159,7 @@ namespace AcornPad.Forms
 
                 ImageBox1.DrawBitmapTile(Project);
                 StatusLabel3.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
+                StatusLabel4.Text = string.Format("Used {0}", Project.Usage(Project.Tiles));
             }
 
             base.Invalidate();
@@ -208,7 +211,7 @@ namespace AcornPad.Forms
         {
             ImageBox1.ZoomFactor += value;
             Project.TileEditForm.ZoomFactor = ImageBox1.ZoomFactor;
-            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel5.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>
@@ -412,6 +415,28 @@ namespace AcornPad.Forms
         {
             Project.AddHistory("Shift Tile Down");
             Project.Tiles.Shift(Common.ShiftType.ShiftDown);
+            TileEdit_ImageChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Tile Negative
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NegativeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Project.AddHistory("Tile Negative");
+            int savedSelectedItem = Project.Chars.SelectedItem;
+
+            int[] tileData = Project.Tiles.Items[Project.Tiles.SelectedItem].Data.Distinct().ToArray();
+
+            foreach (var selectedTem in tileData)
+            {
+                Project.Chars.SelectedItem = selectedTem;
+                Project.Chars.Negative(Project.Palette.NumColours);
+            }
+
+            Project.Chars.SelectedItem = savedSelectedItem;
             TileEdit_ImageChanged?.Invoke(this, e);
         }
     }

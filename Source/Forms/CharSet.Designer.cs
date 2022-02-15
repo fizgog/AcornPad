@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace AcornPad.Forms
 {
     partial class CharSet
@@ -36,14 +39,14 @@ namespace AcornPad.Forms
             this.ButtonZoomIn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripNumericTextBox1 = new WindowsFormsApp1.Controls.ToolStripNumericTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ButtonCompress = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ImageBox1 = new AcornPad.Controls.ImageBox();
-            this.toolStripNumericTextBox1 = new WindowsFormsApp1.Controls.ToolStripNumericTextBox();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +113,15 @@ namespace AcornPad.Forms
             this.toolStripLabel1.Size = new System.Drawing.Size(53, 22);
             this.toolStripLabel1.Text = "Quantity";
             // 
+            // toolStripNumericTextBox1
+            // 
+            this.toolStripNumericTextBox1.MaxValue = 999999;
+            this.toolStripNumericTextBox1.MinValue = 1;
+            this.toolStripNumericTextBox1.Name = "toolStripNumericTextBox1";
+            this.toolStripNumericTextBox1.Size = new System.Drawing.Size(50, 25);
+            this.toolStripNumericTextBox1.Text = "1";
+            this.toolStripNumericTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox1_KeyUp);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -131,8 +143,8 @@ namespace AcornPad.Forms
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel1,
-            this.StatusLabel2,
-            this.StatusLabel3});
+            this.StatusLabel3,
+            this.StatusLabel4});
             this.statusStrip1.Location = new System.Drawing.Point(0, 378);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(400, 22);
@@ -147,18 +159,18 @@ namespace AcornPad.Forms
             this.StatusLabel1.Text = "Ready";
             this.StatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // StatusLabel2
-            // 
-            this.StatusLabel2.Name = "StatusLabel2";
-            this.StatusLabel2.Size = new System.Drawing.Size(44, 17);
-            this.StatusLabel2.Text = "0 Bytes";
-            // 
             // StatusLabel3
             // 
             this.StatusLabel3.Name = "StatusLabel3";
-            this.StatusLabel3.Size = new System.Drawing.Size(39, 17);
-            this.StatusLabel3.Text = "Zoom";
-            this.StatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StatusLabel3.Size = new System.Drawing.Size(44, 17);
+            this.StatusLabel3.Text = "0 Bytes";
+            // 
+            // StatusLabel4
+            // 
+            this.StatusLabel4.Name = "StatusLabel4";
+            this.StatusLabel4.Size = new System.Drawing.Size(39, 17);
+            this.StatusLabel4.Text = "Zoom";
+            this.StatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ImageBox1
             // 
@@ -177,6 +189,7 @@ namespace AcornPad.Forms
             this.ImageBox1.PixelFormatString = null;
             this.ImageBox1.PixelSize = 1;
             this.ImageBox1.ShowGrid = true;
+            this.ImageBox1.ShowTileGrid = false;
             this.ImageBox1.Size = new System.Drawing.Size(400, 353);
             this.ImageBox1.TabIndex = 9;
             this.ImageBox1.ZoomFactor = 24;
@@ -184,14 +197,6 @@ namespace AcornPad.Forms
             this.ImageBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseDown);
             this.ImageBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseMove);
             this.ImageBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseUp);
-            // 
-            // toolStripNumericTextBox1
-            // 
-            this.toolStripNumericTextBox1.MaxValue = 999999;
-            this.toolStripNumericTextBox1.MinValue = 1;
-            this.toolStripNumericTextBox1.Name = "toolStripNumericTextBox1";
-            this.toolStripNumericTextBox1.Size = new System.Drawing.Size(50, 25);
-            this.toolStripNumericTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox1_KeyUp);
             // 
             // CharSet
             // 
@@ -216,7 +221,7 @@ namespace AcornPad.Forms
             this.PerformLayout();
 
         }
-
+      
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -227,8 +232,8 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel4;
         private Controls.ImageBox ImageBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ButtonCompress;

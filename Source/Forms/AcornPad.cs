@@ -359,6 +359,8 @@ namespace AcornPad
 
                 Project.Tiles = null;
             }
+
+            Invalidate();
         }
 
         /// <summary>

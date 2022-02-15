@@ -301,7 +301,7 @@ namespace AcornPad.Forms
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(124, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // transformToolStripMenuItem
             // 
@@ -314,14 +314,15 @@ namespace AcornPad.Forms
             this.ShiftUpToolStripMenuItem,
             this.ShiftDownToolStripMenuItem});
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.transformToolStripMenuItem.Text = "Transform";
             // 
             // FlipHorizontalToolStripMenuItem
             // 
             this.FlipHorizontalToolStripMenuItem.Image = global::AcornPad.Properties.Resources.FlipHorizontal;
             this.FlipHorizontalToolStripMenuItem.Name = "FlipHorizontalToolStripMenuItem";
-            this.FlipHorizontalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.FlipHorizontalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
+            this.FlipHorizontalToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.FlipHorizontalToolStripMenuItem.Text = "Flip Horizontal";
             this.FlipHorizontalToolStripMenuItem.Click += new System.EventHandler(this.FlipHorizontalToolStripMenuItem_Click);
             // 
@@ -329,20 +330,23 @@ namespace AcornPad.Forms
             // 
             this.FlipVerticalToolStripMenuItem.Image = global::AcornPad.Properties.Resources.FlipVertical;
             this.FlipVerticalToolStripMenuItem.Name = "FlipVerticalToolStripMenuItem";
-            this.FlipVerticalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.FlipVerticalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
+            this.FlipVerticalToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.FlipVerticalToolStripMenuItem.Text = "Flip Vertical";
             this.FlipVerticalToolStripMenuItem.Click += new System.EventHandler(this.FlipVerticalToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(148, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 6);
             // 
             // ShiftLeftToolStripMenuItem
             // 
             this.ShiftLeftToolStripMenuItem.Image = global::AcornPad.Properties.Resources.ShiftLeft;
             this.ShiftLeftToolStripMenuItem.Name = "ShiftLeftToolStripMenuItem";
-            this.ShiftLeftToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ShiftLeftToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Left)));
+            this.ShiftLeftToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.ShiftLeftToolStripMenuItem.Text = "Shift Left";
             this.ShiftLeftToolStripMenuItem.Click += new System.EventHandler(this.ShiftLeftToolStripMenuItem_Click);
             // 
@@ -350,7 +354,9 @@ namespace AcornPad.Forms
             // 
             this.ShiftRightToolStripMenuItem.Image = global::AcornPad.Properties.Resources.ShiftRight;
             this.ShiftRightToolStripMenuItem.Name = "ShiftRightToolStripMenuItem";
-            this.ShiftRightToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ShiftRightToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Right)));
+            this.ShiftRightToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.ShiftRightToolStripMenuItem.Text = "Shift Right";
             this.ShiftRightToolStripMenuItem.Click += new System.EventHandler(this.ShiftRightToolStripMenuItem_Click);
             // 
@@ -358,7 +364,9 @@ namespace AcornPad.Forms
             // 
             this.ShiftUpToolStripMenuItem.Image = global::AcornPad.Properties.Resources.ShiftUp;
             this.ShiftUpToolStripMenuItem.Name = "ShiftUpToolStripMenuItem";
-            this.ShiftUpToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ShiftUpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Up)));
+            this.ShiftUpToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.ShiftUpToolStripMenuItem.Text = "Shift Up";
             this.ShiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpToolStripMenuItem_Click);
             // 
@@ -366,7 +374,9 @@ namespace AcornPad.Forms
             // 
             this.ShiftDownToolStripMenuItem.Image = global::AcornPad.Properties.Resources.ShiftDown;
             this.ShiftDownToolStripMenuItem.Name = "ShiftDownToolStripMenuItem";
-            this.ShiftDownToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ShiftDownToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Down)));
+            this.ShiftDownToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.ShiftDownToolStripMenuItem.Text = "Shift Down";
             this.ShiftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownToolStripMenuItem_Click);
             // 

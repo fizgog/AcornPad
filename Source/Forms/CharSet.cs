@@ -36,8 +36,8 @@ namespace AcornPad.Forms
             ImageBox1.GridSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
 
             StatusLabel1.Text = "Ready";
-            StatusLabel2.Text = string.Format("{0} Bytes", Project.Chars.Count * 8 * Project.Machine.PixelsBerByte);
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel3.Text = string.Format("{0} Bytes", Project.Chars.Count * 8 * Project.Machine.PixelsBerByte);
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace AcornPad.Forms
 
                 int bytes = Project.Machine.PixelsBerByte * 8;
 
-                StatusLabel2.Text = string.Format("{0} Bytes", Project.Chars.Count * bytes);
+                StatusLabel3.Text = string.Format("{0} Bytes", Project.Chars.Count * bytes);
             }
 
             base.Invalidate();
@@ -157,7 +157,7 @@ namespace AcornPad.Forms
         {
             ImageBox1.ZoomFactor += value;
             Project.CharSetForm.ZoomFactor = ImageBox1.ZoomFactor;
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
 
             // Only do this on the set forms
             Invalidate();
@@ -281,7 +281,7 @@ namespace AcornPad.Forms
                     Project.Chars.Resize(qty);
                     Project.Maps.Items[0].ValidateChars(Project.Chars.Count);
 
-                    StatusLabel2.Text = string.Format("{0} Bytes", Project.Chars.Count * 64);
+                    StatusLabel3.Text = string.Format("{0} Bytes", Project.Chars.Count * 64);
 
                     CharSet_ImageChanged?.Invoke(this, e);
                 }
@@ -298,6 +298,49 @@ namespace AcornPad.Forms
             Project.AddHistory("Compress Character");
             Project.CompressData(Project.Chars, Project.TilesOnline);
             CharSet_ImageChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                    return MoveSelector(Project.Chars.SelectedItem - ImageBox1.ImageSize.Width);
+
+                case Keys.Down:
+                    return MoveSelector(Project.Chars.SelectedItem + ImageBox1.ImageSize.Width);
+
+                case Keys.Left:
+                    return MoveSelector(Project.Chars.SelectedItem - 1);
+
+                case Keys.Right:
+                    return MoveSelector(Project.Chars.SelectedItem + 1);
+
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newValue"></param>
+        /// <returns></returns>
+        private bool MoveSelector(int newValue)
+        {
+            if (newValue >= 0 && newValue < Project.Chars.Count)
+            {
+                Project.Chars.SelectedItem = newValue;
+                CharSet_ImageChanged?.Invoke(this, new EventArgs());
+            }
+
+            return true;
         }
     }
 }

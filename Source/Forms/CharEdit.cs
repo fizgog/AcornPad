@@ -32,7 +32,8 @@ namespace AcornPad.Forms
 
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = string.Format("Char {0} (${0:X2})", Project.Chars.SelectedItem);
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel3.Text = string.Format("Used {0}", Project.Usage(Project.Chars));
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         
@@ -147,6 +148,7 @@ namespace AcornPad.Forms
             {
                 ImageBox1.DrawBitmapChar(Project);
                 StatusLabel2.Text = string.Format("Char {0} (${0:X2})", Project.Chars.SelectedItem);
+                StatusLabel3.Text = string.Format("Used {0}", Project.Usage(Project.Chars));
             }
 
             base.Invalidate();
@@ -197,7 +199,7 @@ namespace AcornPad.Forms
         {
             ImageBox1.ZoomFactor += value;
             Project.CharEditForm.ZoomFactor = ImageBox1.ZoomFactor;
-            StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
+            StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
         /// <summary>

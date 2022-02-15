@@ -132,6 +132,21 @@ namespace AcornPad
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public int Usage(int value)
+        {
+            int usage = 0;
+            for (int i = 0; i < Count; i++)
+            {
+                usage += Items[i].Usage(value);
+            }
+            return usage;
+        }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="width"></param>
@@ -224,8 +239,7 @@ namespace AcornPad
             if (CanPaste(format))
             {
                 ImageData item = (ImageData)Clipboard.GetData(format);
-                //item.Id = Items.Count;
-                Items.Insert(SelectedItem, item);   
+                Items.Insert(SelectedItem, item);
             }
         }
 

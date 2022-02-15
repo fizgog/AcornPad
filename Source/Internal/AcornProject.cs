@@ -71,7 +71,7 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
-        public ImageDataArray Chars;
+        public ImageDataArray Chars = null;
 
         /// <summary>
         ///
@@ -81,7 +81,7 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
-        public ImageDataArray Tiles;
+        public ImageDataArray Tiles = null;
 
         /// <summary>
         ///
@@ -96,7 +96,7 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
-        public ImageDataArray Maps;
+        public ImageDataArray Maps = null;
 
         public AcornProject()
         {
@@ -190,6 +190,21 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
+        /// <param name="imgArray"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public int Usage(ImageDataArray imgArray)
+        {
+            int usage = 0;
+
+            usage += (imgArray.ImageDataType == DataType.Char && TilesOnline) ? Tiles.Usage(imgArray.SelectedItem) : Maps.Usage(imgArray.SelectedItem);
+
+            return usage;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
         /// <returns></returns>
         public bool CanUndo()
         {
@@ -273,17 +288,23 @@ namespace AcornPad
             {
                 case DataType.Char:
                     AddHistory("Cut Character");
+                    RemapData(TilesOnline ? Tiles : Maps, Chars.Items[Chars.SelectedItem].Id, Chars.Items[0].Id);
                     Chars.Cut("CharImage");
+                    ResyncMap(Chars, TilesOnline);
+                    Chars.SelectedItem = 0;
                     break;
 
                 case DataType.Tile:
                     AddHistory("Cut Tile");
+                    RemapData(Tiles, Tiles.Items[Tiles.SelectedItem].Id, Tiles.Items[0].Id);
                     Tiles.Cut("TileImage");
+                    RemapData(Maps, Tiles.SelectedItem, 0);
+                    Tiles.SelectedItem = 0;
                     break;
 
                 case DataType.Map:
-                    AddHistory("Cut Map");
-                    Maps.Cut("MapImage");
+                    //AddHistory("Cut Map");
+                    //Maps.Cut("MapImage");
                     break;
 
                 default: throw new System.Exception("Unknown image data type.");
@@ -309,8 +330,8 @@ namespace AcornPad
                     break;
 
                 case DataType.Map:
-                    AddHistory("Copy Map");
-                    Maps.Copy("MapImage");
+                    //AddHistory("Copy Map");
+                    //Maps.Copy("MapImage");
                     break;
 
                 default: throw new System.Exception("Unknown image data type.");
@@ -334,31 +355,36 @@ namespace AcornPad
                 case DataType.Tile:
                     AddHistory("Paste Tile");
                     Tiles.Paste("TileImage");
-                        RemapSetToMap(Tiles);
-                
+                    RemapSetToMap(Tiles);
                     break;
 
                 case DataType.Map:
-                    AddHistory("Paste Map");
-                    Maps.Paste("MapImage");
+                    //AddHistory("Paste Map");
+                    //Maps.Paste("MapImage");
                     break;
 
                 default: throw new System.Exception("Unknown image data type.");
             }
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="imgArray"></param>
         public void RemapSetToMap(ImageDataArray imgArray)
         {
             for (int i = 0; i < imgArray.Count; i++)
             {
                 imgArray.Items[i].Id = i;
             }
+
             for (int i = 0; i < Maps.Area; i++)
             {
                 int value = Maps.Items[Maps.SelectedItem].Data[i];
+
                 if (value >= imgArray.SelectedItem)
-                { 
-                    Maps.Items[Maps.SelectedItem].Data[i] = value+1;
+                {
+                    Maps.Items[Maps.SelectedItem].Data[i] = value + 1;
                 }
             }
         }
@@ -383,7 +409,7 @@ namespace AcornPad
         /// Compress character or tile set into the least amount of items
         /// </summary>
         /// <param name="imgArray"></param>
-        public void CompressData(ImageDataArray imgArray, bool TilesOnLine)
+        public void CompressData(ImageDataArray imgArray, bool usingTiles)
         {
             if (imgArray.Count < 2) return;
 
@@ -392,47 +418,50 @@ namespace AcornPad
             {
                 for (int j = i + 1; j < imgArray.Count; j++)
                 {
+                    // Are characters / tiles at i and j the same?
                     if (Helper.IntArrayCompare(imgArray.Items[i].Data, imgArray.Items[j].Data) == true)
                     {
                         int newValue = imgArray.Items[i].Id;
                         int oldValue = imgArray.Items[j].Id;
 
-                        if (imgArray.ImageDataType == DataType.Char && TilesOnline)
-                        {
-                            for(int k=0; k < Tiles.Count; k++)
-                            { 
-                                Tiles.Items[k].RemapData(oldValue,newValue);
-                            }
-                        }
-                        else
-                        { 
-                            Maps.Items[Maps.SelectedItem].RemapData(oldValue, newValue);
-                        }
+                        RemapData(imgArray.ImageDataType == DataType.Char && usingTiles ? Tiles : Maps, oldValue, newValue);
+                        //if (imgArray.ImageDataType == DataType.Char && usingTiles)
+                        //{
+                        //    for(int k=0; k < Tiles.Count; k++)
+                        //    {
+                        //        Tiles.Items[k].RemapData(oldValue,newValue);
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    Maps.Items[Maps.SelectedItem].RemapData(oldValue, newValue);
+                        //}
 
                         imgArray.Items.RemoveAt(j);
                         j--;
                     }
                 }
             }
-            
-            // Reset the id to the index
-            for (int i = 0; i < imgArray.Count; i++)
-            {
-                int oldValue = imgArray.Items[i].Id;
 
-                if ((imgArray.ImageDataType == DataType.Char && TilesOnline))
-                {
-                    for (int k = 0; k < Tiles.Count; k++)
-                    {
-                        Tiles.Items[k].RemapData(oldValue, i);
-                    }
-                }
-                else 
-                { 
-                    Maps.Items[Maps.SelectedItem].RemapData(oldValue, i);
-                }
-                imgArray.Items[i].Id = i;
-            }
+            // Reset the id to the index
+            //for (int i = 0; i < imgArray.Count; i++)
+            //{
+            //    int oldValue = imgArray.Items[i].Id;
+
+            //    if (imgArray.ImageDataType == DataType.Char && usingTiles)
+            //    {
+            //        for (int k = 0; k < Tiles.Count; k++)
+            //        {
+            //            Tiles.Items[k].RemapData(oldValue, i);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Maps.Items[Maps.SelectedItem].RemapData(oldValue, i);
+            //    }
+            //    imgArray.Items[i].Id = i;
+            //}
+            ResyncMap(imgArray, usingTiles);
 
             // set the selectors
             if (imgArray.SelectedItem >= imgArray.Count) imgArray.SelectedItem = imgArray.Count - 1;
@@ -515,6 +544,37 @@ namespace AcornPad
             Tiles.SelectedItem = Tiles.Count >= 1 ? 1 : 0;
 
             CompressData(Tiles, true);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="imgArray"></param>
+        /// <param name="usingTiles"></param>
+        public void ResyncMap(ImageDataArray imgArray, bool usingTiles)
+        {
+            // Reset the id to the index
+            for (int i = 0; i < imgArray.Count; i++)
+            {
+                int oldValue = imgArray.Items[i].Id;
+                if (oldValue != i)
+                {
+                    RemapData(imgArray.ImageDataType == DataType.Char && usingTiles ? Tiles : Maps, oldValue, i);
+                    imgArray.Items[i].Id = i;
+                }
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="imgArray"></param>
+        private void RemapData(ImageDataArray imgArray, int oldValue, int newValue)
+        {
+            for (int i = 0; i < imgArray.Count; i++)
+            {
+                imgArray.Items[i].RemapData(oldValue, newValue);
+            }
         }
     }
 }

@@ -339,5 +339,48 @@ namespace AcornPad.Forms
             Project.CompressData(Project.Tiles, Project.TilesOnline);
             TileSet_ImageChanged?.Invoke(this, e);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                    return MoveSelector(Project.Tiles.SelectedItem - ImageBox1.ImageSize.Width);
+
+                case Keys.Down:
+                    return MoveSelector(Project.Tiles.SelectedItem + ImageBox1.ImageSize.Width);
+
+                case Keys.Left:
+                    return MoveSelector(Project.Tiles.SelectedItem - 1);
+
+                case Keys.Right:
+                    return MoveSelector(Project.Tiles.SelectedItem + 1);
+
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newValue"></param>
+        /// <returns></returns>
+        private bool MoveSelector(int newValue)
+        {
+            if (newValue >= 0 && newValue < Project.Tiles.Count)
+            {
+                Project.Tiles.SelectedItem = newValue;
+                TileSet_ImageChanged?.Invoke(this, new EventArgs());
+            }
+
+            return true;
+        }
     }
 }

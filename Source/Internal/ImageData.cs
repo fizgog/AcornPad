@@ -7,7 +7,7 @@ namespace AcornPad
     public class ImageData : ICloneable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace AcornPad
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonIgnore]
         public string DisplayName => Name + (Id + 1).ToString();
@@ -129,6 +129,22 @@ namespace AcornPad
         }
 
         /// <summary>
+        ///
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public int Usage(int value)
+        {
+            int usage = 0;
+            foreach (int i in Data)
+            {
+                if (i == value) usage++;
+            }
+
+            return usage;
+        }
+
+        /// <summary>
         /// Check if image is empty
         /// </summary>
         /// <returns></returns>
@@ -199,7 +215,10 @@ namespace AcornPad
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Data[i] == oldValue) Data[i] = newValue;
+                if (Data[i] == oldValue)
+                {
+                    Data[i] = newValue;
+                }
             }
         }
 
