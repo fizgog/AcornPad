@@ -59,6 +59,7 @@ namespace AcornPad.Forms
             this.ShiftUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShiftDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NegativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageBox1 = new AcornPad.Controls.ImageBox();
             this.statusStrip1.SuspendLayout();
@@ -124,7 +125,7 @@ namespace AcornPad.Forms
             this.ButtonPen,
             this.ButtonBrush,
             this.ButtonFloodFill});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(434, 25);
@@ -271,7 +272,7 @@ namespace AcornPad.Forms
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(227, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(263, 6);
             // 
             // FlipHorizontalToolStripMenuItem
             // 
@@ -294,7 +295,7 @@ namespace AcornPad.Forms
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(227, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(263, 6);
             // 
             // ShiftLeftToolStripMenuItem
             // 
@@ -339,10 +340,18 @@ namespace AcornPad.Forms
             // colourToolStripMenuItem
             // 
             this.colourToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.replaceColourToolStripMenuItem,
             this.NegativeToolStripMenuItem});
             this.colourToolStripMenuItem.Name = "colourToolStripMenuItem";
             this.colourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.colourToolStripMenuItem.Text = "Colour";
+            // 
+            // replaceColourToolStripMenuItem
+            // 
+            this.replaceColourToolStripMenuItem.Name = "replaceColourToolStripMenuItem";
+            this.replaceColourToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.replaceColourToolStripMenuItem.Text = "Replace Colour...";
+            this.replaceColourToolStripMenuItem.Click += new System.EventHandler(this.ReplaceColourToolStripMenuItem_Click);
             // 
             // NegativeToolStripMenuItem
             // 
@@ -363,14 +372,14 @@ namespace AcornPad.Forms
             this.ImageBox1.EraseColour = System.Drawing.Color.Empty;
             this.ImageBox1.Image = null;
             this.ImageBox1.ImageRect = new System.Drawing.Rectangle(0, 0, 192, 192);
-            this.ImageBox1.Location = new System.Drawing.Point(0, 25);
+            this.ImageBox1.Location = new System.Drawing.Point(0, 49);
             this.ImageBox1.Name = "ImageBox1";
             this.ImageBox1.PaintTool = 0;
             this.ImageBox1.PixelFormatString = null;
             this.ImageBox1.PixelSize = 1;
             this.ImageBox1.ShowGrid = true;
             this.ImageBox1.ShowTileGrid = false;
-            this.ImageBox1.Size = new System.Drawing.Size(434, 314);
+            this.ImageBox1.Size = new System.Drawing.Size(434, 290);
             this.ImageBox1.TabIndex = 0;
             this.ImageBox1.Text = "imageBox1";
             this.ImageBox1.ZoomFactor = 24;
@@ -440,5 +449,6 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripMenuItem colourToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NegativeToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel3;
+        private System.Windows.Forms.ToolStripMenuItem replaceColourToolStripMenuItem;
     }
 }

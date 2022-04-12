@@ -20,8 +20,6 @@ namespace AcornPad.Forms
             InitializeComponent();
             Project = project;
 
-            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
-
             Location = Project.CharEditForm.Location;
             Size = Project.CharEditForm.Size;
 
@@ -29,14 +27,13 @@ namespace AcornPad.Forms
             ImageBox1.PixelSize = Project.Machine.PixelSize;
             ImageBox1.ImageSize = new System.Drawing.Size(1, 1);
             ImageBox1.GridSize = new System.Drawing.Size(1 * ImageBox1.PixelSize, 1);
+            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
 
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = string.Format("Char {0} (${0:X2})", Project.Chars.SelectedItem);
             StatusLabel3.Text = string.Format("Used {0}", Project.Usage(Project.Chars));
             StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
-
-        
 
         /// <summary>
         ///
@@ -146,6 +143,9 @@ namespace AcornPad.Forms
         {
             if (Project != null && Project.Chars != null)
             {
+                ImageBox1.PixelSize = Project.Machine.PixelSize;
+                ImageBox1.GridSize = new System.Drawing.Size(1 * ImageBox1.PixelSize, 1);
+
                 ImageBox1.DrawBitmapChar(Project);
                 StatusLabel2.Text = string.Format("Char {0} (${0:X2})", Project.Chars.SelectedItem);
                 StatusLabel3.Text = string.Format("Used {0}", Project.Usage(Project.Chars));
@@ -192,7 +192,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         private void Zoom(int value)
@@ -299,7 +299,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -386,6 +386,25 @@ namespace AcornPad.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void ReplaceColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReplaceColour frm = new ReplaceColour(Project);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (frm.OldColour != frm.NewColour)
+                {
+                    Project.AddHistory("Character Replace Colour");
+                    Project.Chars.Items[Project.Chars.SelectedItem].ReplaceColour(frm.OldColour, frm.NewColour);
+                    CharEdit_ImageChanged?.Invoke(this, e);
+                }
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NegativeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Project.AddHistory("Character Negative");
@@ -441,6 +460,11 @@ namespace AcornPad.Forms
             CharEdit_ImageChanged?.Invoke(this, e);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CharEdit_Leave(object sender, EventArgs e)
         {
             StatusLabel1.Text = "Ready";

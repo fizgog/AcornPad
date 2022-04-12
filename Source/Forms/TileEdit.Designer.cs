@@ -43,6 +43,7 @@ namespace AcornPad.Forms
             this.StatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,7 @@ namespace AcornPad.Forms
             this.colourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NegativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageBox1 = new AcornPad.Controls.ImageBox();
-            this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.replaceColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -75,7 +76,7 @@ namespace AcornPad.Forms
             this.ButtonBrush,
             this.ButtonFloodFill,
             this.ButtonPicker});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(400, 25);
@@ -199,6 +200,12 @@ namespace AcornPad.Forms
             this.StatusLabel3.Text = "Tile #";
             this.StatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // StatusLabel4
+            // 
+            this.StatusLabel4.Name = "StatusLabel4";
+            this.StatusLabel4.Size = new System.Drawing.Size(43, 17);
+            this.StatusLabel4.Text = "Used #";
+            // 
             // StatusLabel5
             // 
             this.StatusLabel5.Name = "StatusLabel5";
@@ -313,6 +320,7 @@ namespace AcornPad.Forms
             // colourToolStripMenuItem
             // 
             this.colourToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.replaceColourToolStripMenuItem,
             this.NegativeToolStripMenuItem});
             this.colourToolStripMenuItem.Name = "colourToolStripMenuItem";
             this.colourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -339,14 +347,14 @@ namespace AcornPad.Forms
             this.ImageBox1.Image = null;
             this.ImageBox1.ImageRect = new System.Drawing.Rectangle(0, 0, 192, 192);
             this.ImageBox1.ImageSize = new System.Drawing.Size(4, 4);
-            this.ImageBox1.Location = new System.Drawing.Point(0, 25);
+            this.ImageBox1.Location = new System.Drawing.Point(0, 49);
             this.ImageBox1.Name = "ImageBox1";
             this.ImageBox1.PaintTool = 0;
             this.ImageBox1.PixelFormatString = null;
             this.ImageBox1.PixelSize = 1;
             this.ImageBox1.ShowGrid = true;
             this.ImageBox1.ShowTileGrid = false;
-            this.ImageBox1.Size = new System.Drawing.Size(400, 353);
+            this.ImageBox1.Size = new System.Drawing.Size(400, 329);
             this.ImageBox1.TabIndex = 9;
             this.ImageBox1.Text = "ImageBox1";
             this.ImageBox1.ZoomFactor = 24;
@@ -354,11 +362,12 @@ namespace AcornPad.Forms
             this.ImageBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseMove);
             this.ImageBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseUp);
             // 
-            // StatusLabel4
+            // replaceColourToolStripMenuItem
             // 
-            this.StatusLabel4.Name = "StatusLabel4";
-            this.StatusLabel4.Size = new System.Drawing.Size(43, 17);
-            this.StatusLabel4.Text = "Used #";
+            this.replaceColourToolStripMenuItem.Name = "replaceColourToolStripMenuItem";
+            this.replaceColourToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.replaceColourToolStripMenuItem.Text = "Replace Colour...";
+            this.replaceColourToolStripMenuItem.Click += new System.EventHandler(this.ReplaceColourToolStripMenuItem_Click);
             // 
             // TileEdit
             // 
@@ -418,5 +427,6 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripMenuItem colourToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NegativeToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel4;
+        private System.Windows.Forms.ToolStripMenuItem replaceColourToolStripMenuItem;
     }
 }

@@ -190,6 +190,21 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
+        /// <param name="numColours"></param>
+        public void ReduceColours(int numColours)
+        {
+            for (int index = 0; index < Chars.Count; index++)
+            {
+                for (int i = 0; i < Chars.Items[index].Count; i++)
+                {
+                    Chars.Items[index].Data[i] = Chars.Items[index].Data[i] % numColours;
+                }
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="imgArray"></param>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -298,7 +313,7 @@ namespace AcornPad
                     AddHistory("Cut Tile");
                     RemapData(Tiles, Tiles.Items[Tiles.SelectedItem].Id, Tiles.Items[0].Id);
                     Tiles.Cut("TileImage");
-                    RemapData(Maps, Tiles.SelectedItem, 0);
+                    ResyncMap(Tiles, TilesOnline);
                     Tiles.SelectedItem = 0;
                     break;
 

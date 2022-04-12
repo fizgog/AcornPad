@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColourPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColourPicker.Designer.cs">
+      <DependentUpon>ColourPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -121,6 +127,12 @@
     </Compile>
     <Compile Include="EnumTypes\MachineType.cs" />
     <Compile Include="EventArgs\TableEventArgs.cs" />
+    <Compile Include="Forms\ImportBin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportBin.Designer.cs">
+      <DependentUpon>ImportBin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewTileSize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +144,12 @@
     </Compile>
     <Compile Include="Forms\ReleaseNotes.Designer.cs">
       <DependentUpon>ReleaseNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReplaceColour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReplaceColour.Designer.cs">
+      <DependentUpon>ReplaceColour.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal\AcornProject.cs" />
     <Compile Include="EnumTypes\ExportFormatType.cs" />
@@ -268,6 +286,9 @@
     <EmbeddedResource Include="Forms\ExportScreen.resx">
       <DependentUpon>ExportScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportBin.resx">
+      <DependentUpon>ImportBin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportImage.resx">
       <DependentUpon>ImportImage.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReleaseNotes.resx">
       <DependentUpon>ReleaseNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReplaceColour.resx">
+      <DependentUpon>ReplaceColour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TileEdit.resx">
       <DependentUpon>TileEdit.cs</DependentUpon>

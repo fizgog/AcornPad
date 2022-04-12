@@ -55,6 +55,31 @@ namespace AcornPad.Controls
         /// <summary>
         ///
         /// </summary>
+        public string DrawLabel
+        {
+            get { return LabelDrawColour.Text; }
+            set { LabelDrawColour.Text = value; }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string EraseLabel
+        {
+            get { return LabelEraseColour.Text; }
+            set { LabelEraseColour.Text = value;  }
+        }
+
+
+        public void ResetButtons(bool show)
+        {
+            ButtonReset1.Visible = show;
+            ButtonReset2.Visible = show;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
         public AcornPalette()
         {
             InitializeComponent();

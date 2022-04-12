@@ -10,8 +10,8 @@ namespace AcornPad.Forms
         private const int ZOOM_MIN_FACTOR = 2;
         private const int ZOOM_MAX_FACTOR = 10;
 
-        private Color purple = Color.FromArgb(113, 96, 232);
-        private Color green = Color.FromArgb(108, 203, 95);
+        private readonly Color purple = Color.FromArgb(113, 96, 232);
+        private readonly Color green = Color.FromArgb(108, 203, 95);
 
         private readonly AcornProject Project;
 
@@ -22,18 +22,16 @@ namespace AcornPad.Forms
             InitializeComponent();
             Project = project;
 
-            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
-
             Location = Project.CharSetForm.Location;
             Size = Project.CharSetForm.Size;
-
-            ImageBox1.ZoomFactor = Project.CharSetForm.ZoomFactor;
 
             toolStripNumericTextBox1.Text = Project.Chars.Count.ToString();
 
             ImageBox1.PixelSize = Project.Machine.PixelSize;
             ImageBox1.ImageSize = new System.Drawing.Size(64, 1);
             ImageBox1.GridSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
+            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
+            ImageBox1.ZoomFactor = Project.CharSetForm.ZoomFactor;
 
             StatusLabel1.Text = "Ready";
             StatusLabel3.Text = string.Format("{0} Bytes", Project.Chars.Count * 8 * Project.Machine.PixelsBerByte);
@@ -100,7 +98,9 @@ namespace AcornPad.Forms
 
                 int height = (Project.Chars.Count / width) + 1;
 
+                ImageBox1.PixelSize = Project.Machine.PixelSize;
                 ImageBox1.ImageSize = new Size(width, height);
+                ImageBox1.GridSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
 
                 ImageBox1.DrawBitmapCharSet(Project);
 
@@ -170,7 +170,6 @@ namespace AcornPad.Forms
         /// <param name="e"></param>
         private void ImageBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            //if (e.X >= 0 && e.X < ImageBox1.ClientSize.Width && e.Y >= 0 && e.Y < ImageBox1.ClientSize.Height)
             if (e.X >= 0 && e.X < ImageBox1.ImageRect.Width && e.Y >= 0 && e.Y < ImageBox1.ImageRect.Height)
             {
                 int xPos = ImageBox1.ScrollX(e.X);
@@ -201,7 +200,6 @@ namespace AcornPad.Forms
         /// <param name="e"></param>
         private void ImageBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            //if (e.X >= 0 && e.X < ImageBox1.ClientSize.Width && e.Y >= 0 && e.Y < ImageBox1.ClientSize.Height)
             if (e.X >= 0 && e.X < ImageBox1.ImageRect.Width && e.Y >= 0 && e.Y < ImageBox1.ImageRect.Height)
             {
                 int xPos = ImageBox1.ScrollX(e.X);
@@ -301,7 +299,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="keyData"></param>
@@ -328,7 +326,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="newValue"></param>
         /// <returns></returns>
@@ -341,6 +339,25 @@ namespace AcornPad.Forms
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReplaceColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReplaceColour frm = new ReplaceColour(Project);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (frm.OldColour != frm.NewColour)
+                {
+                    Project.AddHistory("Character Replace All Colours");
+                    Project.Chars.ReplaceColour(frm.OldColour, frm.NewColour);
+                    CharSet_ImageChanged?.Invoke(this, e);
+                }
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using AcornPad.Internal;
+﻿using AcornPad.Common;
+using AcornPad.Internal;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -248,6 +250,73 @@ namespace AcornPad.Controls
         public void Load(string fileName)
         {
             Image = (Bitmap)System.Drawing.Image.FromFile(fileName);
+            ImageSize = new Size(Image.Width, Image.Height);
+
+            PixelFormatString = Image.PixelFormat.ToString();
+            Invalidate();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buffer"></param>
+        public void Load(MachineType machineType, Machine machine, Palette palette, byte[] buffer)
+        {
+            int bytes = 8;
+            Color[] pal = palette.WinColours;
+
+            int nx = 0;
+            int ny = 0;
+
+            int width = machine.Width;
+            int height = (buffer.Length / width) * machine.PixelsBerByte; 
+
+            int columns = width / machine.PixelsBerByte;
+            int rows = (buffer.Length / bytes) / columns;
+
+            Bitmap canvas = new Bitmap(width, height);
+           
+            int address = 0;
+
+            for(int k = 0; k < rows; k++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    for (int i = 0; i < bytes; i++)
+                    {
+                        int pixel = buffer[address];
+
+                        List<int> bitsArray;
+
+                        // TODO Maybe add other machine types such as ZX Spetrum , Commodore 64 etc
+                        switch (machineType)
+                        {
+                            case MachineType.Atom :
+                                bitsArray = Sys.Unpack_Atom_Byte(machine.BitsPerPixel, pixel);
+                                break;
+
+                            case MachineType.BBC:
+                                bitsArray = Sys.Unpack_BBC_Byte(machine.BitsPerPixel, pixel);
+                                break;
+
+                            default:
+                                throw new Exception("Unknown machine type");
+                        }
+
+                        for (int bit = 0; bit < bitsArray.Count; bit++)
+                        {
+                            Color col = pal[bitsArray[bit]];
+                            canvas.SetPixel(nx + bit, ny + i, col);
+                        }
+                        address++;
+                    }
+                    nx += machine.PixelsBerByte;
+                }
+                nx = 0;
+                ny += bytes;
+            }
+
+            Image = canvas;
             ImageSize = new Size(Image.Width, Image.Height);
 
             PixelFormatString = Image.PixelFormat.ToString();

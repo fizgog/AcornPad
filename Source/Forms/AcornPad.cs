@@ -29,8 +29,6 @@ namespace AcornPad
 
         private ClipboardHistory clipboardHistory;
 
-        //private readonly List<Machine> machineList;
-
         private string Filename { get; set; }
 
         public bool IsProjectDirty { get; set; }
@@ -1155,7 +1153,8 @@ namespace AcornPad
             {
                 FileStream stream = new FileStream(saveFileDialog1.FileName, FileMode.Create);
 
-                int bitsPerPixel = Project.Machine.PixelsBerByte;
+                int bitsPerByte = Project.Machine.BitsPerPixel;
+
                 int mapWidth = Project.Maps.Items[0].Width;
                 int mapHeight = Project.Maps.Items[0].Height;
 
@@ -1167,7 +1166,7 @@ namespace AcornPad
                         int index = my * mapWidth + mx;
                         int tileXY = Project.Maps.Items[0].Data[index];
 
-                        int[] beeb = Sys.ConvertToRow(bitsPerPixel, Project.Chars.Items[tileXY].Data);
+                        int[] beeb = Sys.ConvertToRow(bitsPerByte, Project.Chars.Items[tileXY].Data);
 
                         byte[] bytes = beeb.Select(i => (byte)i).ToArray();
 
@@ -1179,6 +1178,11 @@ namespace AcornPad
             }
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReleaseNotesMenu_Click(object sender, EventArgs e)
         {
             ReleaseNotes notes = new ReleaseNotes()
@@ -1187,6 +1191,52 @@ namespace AcornPad
             };
 
             notes.Show();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImportBinaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            if (IsProjectDirty)
+            {
+                result = MessageBox.Show("You have unsaved work.\r\n\r\nDo you wish to save before creating a new project?",
+                                                      "Warning",
+                                                      MessageBoxButtons.YesNoCancel,
+                                                      MessageBoxIcon.Exclamation);
+
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+                else if (result == DialogResult.Yes)
+                {
+                    if (SaveProject(Filename) == false)
+                        return;
+                }
+            }
+
+            CloseProject();
+
+            ImportBin frm = new ImportBin();
+
+            result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (frm.Project != null)
+                {
+                    Project = frm.Project;
+                    //Project.AddHistory("Import Image");
+                    ShowProject();
+                }
+            }
+
+            frm.Dispose();
         }
     }
 }

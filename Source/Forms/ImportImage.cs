@@ -186,7 +186,7 @@ namespace AcornPad.Forms
             ButtonCancel.Enabled = false;
 
             statusStrip1.InProgress(true);
-      
+
             Worker = new Thread(() => GenerateImage());
             Worker.Start();
         }
@@ -207,7 +207,7 @@ namespace AcornPad.Forms
                 ButtonCancel.Enabled = false;
 
                 statusStrip1.InProgress(true);
-                
+
                 Worker = new Thread(() => GenerateProject());
                 Worker.Start();
             }
@@ -286,6 +286,9 @@ namespace AcornPad.Forms
                 int xOffset = OffsetX.Text.ToInteger();
                 int yOffset = OffsetY.Text.ToInteger();
 
+                int saturation = numericUpDown1.Value.ToInteger();
+                int brightness = numericUpDown2.Value.ToInteger();
+
                 ImageBox2.PixelSize = machine.PixelSize;
 
                 palette = new Palette(GetMachineType, numColours);
@@ -295,7 +298,7 @@ namespace AcornPad.Forms
                 {
                     // Count colours for modes < 16
                     Palette pal = new Palette(GetMachineType);
-                    int[] colCount = ImageBox1.Image.CountPalette(pal, conv, xOffset, yOffset);
+                    int[] colCount = ImageBox1.Image.CountPalette(pal, conv, xOffset, yOffset, saturation, brightness);
 
                     // Order indices
                     var colOrder = Enumerable.Range(0, colCount.Length).OrderByDescending(i => colCount[i]).ToList();
@@ -310,7 +313,7 @@ namespace AcornPad.Forms
                 }
 
                 // Convert to Acorn Image
-                ImageBox2.Image = ImageBox1.Image.ImageToAcorn(palette, conv, xOffset, yOffset);
+                ImageBox2.Image = ImageBox1.Image.ImageToAcorn(palette, conv, xOffset, yOffset, saturation, brightness);
 
                 // Resize Image ?
                 if (CheckBoxResize.Checked)
@@ -349,7 +352,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private void ThreadConvertComplete()
         {

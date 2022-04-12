@@ -34,7 +34,7 @@ namespace AcornPad
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaletteEdit));
             this.PaletteGroupBox = new System.Windows.Forms.GroupBox();
             this.beebPalette1 = new AcornPad.Controls.AcornPalette();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ComboBoxGfxMode = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -69,6 +69,8 @@ namespace AcornPad
             // 
             // beebPalette1
             // 
+            this.beebPalette1.DrawLabel = "Draw Colour";
+            this.beebPalette1.EraseLabel = "Erase Colour";
             this.beebPalette1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.beebPalette1.Location = new System.Drawing.Point(6, 27);
             this.beebPalette1.Margin = new System.Windows.Forms.Padding(2);
@@ -77,23 +79,22 @@ namespace AcornPad
             this.beebPalette1.TabIndex = 0;
             this.beebPalette1.ColourChanged += new System.EventHandler(this.BeebPalette1_ColourChanged);
             // 
-            // comboBox2
+            // GfxModeComboBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Enabled = false;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 20);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(268, 21);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
+            this.ComboBoxGfxMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxGfxMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxGfxMode.FormattingEnabled = true;
+            this.ComboBoxGfxMode.Location = new System.Drawing.Point(6, 20);
+            this.ComboBoxGfxMode.Name = "GfxModeComboBox";
+            this.ComboBoxGfxMode.Size = new System.Drawing.Size(268, 21);
+            this.ComboBoxGfxMode.TabIndex = 0;
+            this.ComboBoxGfxMode.SelectedIndexChanged += new System.EventHandler(this.GfxModeComboBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.ComboBoxGfxMode);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(18, 12);
             this.groupBox1.Name = "groupBox1";
@@ -251,6 +252,7 @@ namespace AcornPad
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Palette";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Palette_FormClosing);
+            this.Load += new System.EventHandler(this.PaletteEdit_Load);
             this.Move += new System.EventHandler(this.Palette_Move);
             this.Resize += new System.EventHandler(this.Palette_Resize);
             this.PaletteGroupBox.ResumeLayout(false);
@@ -271,7 +273,7 @@ namespace AcornPad
         #endregion
 
         private System.Windows.Forms.GroupBox PaletteGroupBox;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox ComboBoxGfxMode;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

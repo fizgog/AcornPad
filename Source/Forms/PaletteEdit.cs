@@ -1,4 +1,9 @@
-﻿using System;
+﻿using AcornPad.Common;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AcornPad
@@ -6,7 +11,7 @@ namespace AcornPad
     public partial class PaletteEdit : Form
     {
         private readonly AcornProject Project;
-        //private readonly List<Machine> machineList;
+        private readonly List<Machine> MachineList;
 
         public event EventHandler PaletteChanged;
 
@@ -23,34 +28,41 @@ namespace AcornPad
         {
             InitializeComponent();
             Project = project;
-
+       
             Location = Project.PaletteForm.Location;
             Size = Project.PaletteForm.Size;
 
-            //machineList = Project.Machine;
+            MachineList = Sys.GetMachineList(Project.Machine.MachineType);
 
-            //foreach (var itm in machineList)
-            //{
-            //    comboBox2.Items.Add(itm.Description);
-            //}
-            comboBox2.Items.Add(Project.Machine.Description);
-
+            foreach (var itm in MachineList)
+            {
+                ComboBoxGfxMode.Items.Add(itm.Description);
+            }
+      
             beebPalette1.MachineType = (Project.Machine.MachineType == "Acorn Atom") ? Common.MachineType.Atom : Common.MachineType.BBC;
 
             beebPalette1.Palette = Project.Palette;
             beebPalette1.SetColourMode(false, Project.Palette.ColourSet);
-            //beebPalette1.AcornPalette.NumColours = Project.Machine.NumColours;
-
-            comboBox2.SelectedIndex = comboBox2.FindString(Project.Machine.Description);
+       
+            ComboBoxGfxMode.SelectedIndex = ComboBoxGfxMode.FindString(Project.Machine.Description);
 
             TileComboBox.SelectedIndex = Project.TilesOnline == true ? 0 : 1;
             MapsComboBox.SelectedIndex = Project.MultipleMaps == true ? 0 : 1;
             MapNumericUpDown.Value = Project.NumberOfMaps == 0 ? 1 : Project.NumberOfMaps;
 
             // TODO
-            //TileComboBox.Enabled = false;
             MapsComboBox.Enabled = false;
             MapNumericUpDown.Enabled = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PaletteEdit_Load(object sender, EventArgs e)
+        {
+            
         }
 
         /// <summary>
@@ -92,7 +104,8 @@ namespace AcornPad
         /// </summary>
         public new void Invalidate()
         {
-            // Colours????
+            beebPalette1.Palette = Project.Palette;
+            beebPalette1.SetColourMode(false, Project.Palette.ColourSet);
 
             TileComboBox.SelectedIndex = Project.TilesOnline == true ? 0 : 1;
             MapsComboBox.SelectedIndex = Project.MultipleMaps == true ? 0 : 1;
@@ -123,9 +136,35 @@ namespace AcornPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void GfxModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //beebPalette1.AcornPalette.NumColours = machineList[comboBox2.SelectedIndex].NumColours;
+            foreach (var itm in MachineList)
+            {
+                if (itm.Description == ComboBoxGfxMode.SelectedItem.ToString())
+                {
+                    if (Project.Palette.NumColours > itm.NumColours)
+                    {
+                        Project.ReduceColours(itm.NumColours);
+                    }
+
+                    Project.Machine = itm;
+                    Project.Palette = new Internal.Palette(Project.MachineType, itm.NumColours);
+
+                    // Copy existing palette over the top of the new one
+                    //foreach(var itm in beebPalette1.Palette.)
+                    for(int i = 0; i < Project.Palette.NumColours && i < beebPalette1.Palette.NumColours; i++)
+                    {
+                        Project.Palette.AcornColourSet1[i] = beebPalette1.Palette.AcornColourSet1[i];
+                        Project.Palette.AcornColourSet2[i] = beebPalette1.Palette.AcornColourSet2[i];
+                        Project.Palette.WinColours[i] = beebPalette1.Palette.WinColours[i];
+                    }
+
+                    PaletteChanged?.Invoke(this, e);
+                    return;
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -183,5 +222,7 @@ namespace AcornPad
         {
             
         }
+
+        
     }
 }

@@ -52,7 +52,7 @@ namespace AcornPad
         /// <param name="xOffset"></param>
         /// <param name="yOffset"></param>
         /// <returns></returns>
-        public static int[] CountPalette(this Bitmap Image, Palette palette, int conv, int xOffset, int yOffset)
+        public static int[] CountPalette(this Bitmap Image, Palette palette, int conv, int xOffset, int yOffset, int saturation, int brightness)
         {
             int[] colourCount = new int[16];
 
@@ -91,7 +91,7 @@ namespace AcornPad
                 {
                     case 1: col = palette.FindClosestRGBColour(tst); break;
                     case 2: col = palette.FindClosestHueColour(tst); break;
-                    case 3: col = palette.FindClosestSatBrightColour(tst); break;
+                    case 3: col = palette.FindClosestSatBrightColour(tst, saturation,brightness); break;
                     default: throw new Exception("Invalid conversion type");
                 }
 
@@ -116,7 +116,7 @@ namespace AcornPad
         /// <param name="xOffset"></param>
         /// <param name="yOffset"></param>
         /// <returns></returns>
-        public static Bitmap ImageToAcorn(this Bitmap Image, Palette palette, int conv, int xOffset, int yOffset)
+        public static Bitmap ImageToAcorn(this Bitmap Image, Palette palette, int conv, int xOffset, int yOffset, int saturation, int brightness)
         {
             RectangleF cloneRect = new RectangleF(xOffset, yOffset, Image.Width - xOffset, Image.Height - yOffset);
 
@@ -152,7 +152,7 @@ namespace AcornPad
                 {
                     case 1: col = palette.FindClosestRGBColour(tst); break;
                     case 2: col = palette.FindClosestHueColour(tst); break;
-                    case 3: col = palette.FindClosestSatBrightColour(tst); break;
+                    case 3: col = palette.FindClosestSatBrightColour(tst, saturation,brightness); break;
                     default: throw new Exception("Invalid conversion type");
                 }
 

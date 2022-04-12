@@ -132,7 +132,7 @@ namespace AcornPad
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -328,26 +328,13 @@ namespace AcornPad
         /// <summary>
         ///
         /// </summary>
-        public void RemapCharsToTiles(int width, int height)
+        /// <param name="oldColour"></param>
+        /// <param name="newColour"></param>
+        public void ReplaceColour(int oldColour, int newColour)
         {
-            // Clone existing image data
-            ImageDataArray clonedImage = (ImageDataArray)Clone();
-
             for (int i = 0; i < Count; i++)
             {
-            }
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public void RemapTilesToChars(int width, int height)
-        {
-            // Clone existing image data
-            ImageDataArray clonedImage = (ImageDataArray)Clone();
-
-            for (int i = 0; i < Count; i++)
-            {
+                Items[i].ReplaceColour(oldColour, newColour);
             }
         }
     }

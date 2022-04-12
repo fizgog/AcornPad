@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Reflection;
 
 namespace AcornPad.Common
 {
     public static class Sys
     {
+        public static Color[] palette;
+
         /// <summary>
         ///
         /// </summary>
@@ -36,6 +41,34 @@ namespace AcornPad.Common
                 Version version = Assembly.GetExecutingAssembly().GetName().Version;
                 return string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
             }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public static List<Machine> GetMachineList()
+        {
+            List<Machine> machineList = new List<Machine>();
+
+            // Load json file into machine array
+            using (StreamReader r = new StreamReader("Machine.json"))
+            {
+                string json = r.ReadToEnd();
+                machineList = JsonConvert.DeserializeObject<List<Machine>>(json);
+            }
+
+            return machineList;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="machineType"></param>
+        /// <returns></returns>
+        public static List<Machine> GetMachineList(string machineType)
+        {
+            return GetMachineList().FindAll(x => x.MachineType == machineType);
         }
 
         /// <summary>
@@ -469,6 +502,90 @@ namespace AcornPad.Common
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bitsPerPixel"></param>
+        /// <param name="charByte"></param>
+        /// <returns></returns>
+        public static List<int> Unpack_BBC_Byte(int bitsPerPixel, int charByte)
+        {
+            List<int> bits = new List<int>();
+
+            // 8 bits
+            if (bitsPerPixel == 1)
+            {
+                bits.Add((charByte >> 7) & 0x01);
+                bits.Add((charByte >> 6) & 0x01);
+                bits.Add((charByte >> 5) & 0x01);
+                bits.Add((charByte >> 4) & 0x01);
+                bits.Add((charByte >> 3) & 0x01);
+                bits.Add((charByte >> 2) & 0x01);
+                bits.Add((charByte >> 1) & 0x01);
+                bits.Add((charByte) & 0x01);
+            }
+
+            // 4 bits
+            else if (bitsPerPixel == 2)
+            {
+                bits.Add(((charByte >> 6) & 0x02) | ((charByte >> 3) & 0x01));
+                bits.Add(((charByte >> 5) & 0x02) | ((charByte >> 2) & 0x01));
+                bits.Add(((charByte >> 4) & 0x02) | ((charByte >> 1) & 0x01));
+                bits.Add(((charByte >> 3) & 0x02) | ((charByte) & 0x01));
+            }
+
+            // 2 bits
+            else if (bitsPerPixel == 4)
+            {
+                bits.Add(((charByte >> 4) & 0x08) | ((charByte >> 3) & 0x04) | ((charByte >> 2) & 0x02) | ((charByte >> 1) & 0x01));
+                bits.Add(((charByte >> 3) & 0x08) | ((charByte >> 2) & 0x04) | ((charByte >> 1) & 0x02) | (charByte & 0x01));
+            }
+
+            return bits;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bitsPerPixel"></param>
+        /// <param name="charByte"></param>
+        /// <returns></returns>
+        public static List<int> Unpack_Atom_Byte(int bitsPerPixel, int charByte)
+        {
+            List<int> bits = new List<int>();
+
+            if (bitsPerPixel == 1)
+            {
+                bits.Add((charByte >> 7) & 0x01);
+                bits.Add((charByte >> 6) & 0x01);
+                bits.Add((charByte >> 5) & 0x01);
+                bits.Add((charByte >> 4) & 0x01);
+                bits.Add((charByte >> 3) & 0x01);
+                bits.Add((charByte >> 2) & 0x01);
+                bits.Add((charByte >> 1) & 0x01);
+                bits.Add((charByte) & 0x01);
+            }
+            else if (bitsPerPixel == 2)
+            {
+                bits.Add((charByte >> 6) & 0x03);
+                bits.Add((charByte >> 4) & 0x03);
+                bits.Add((charByte >> 2) & 0x03);
+                bits.Add((charByte) & 0x03);
+            }
+
+            return bits;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static Color GetColour(int index)
+        {
+            return palette[index];
         }
     }
 }

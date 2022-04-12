@@ -20,26 +20,23 @@ namespace AcornPad.Forms
             InitializeComponent();
             Project = project;
 
-            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
-
             Location = Project.MapForm.Location;
             Size = Project.MapForm.Size;
 
-            ImageBox1.ZoomFactor = Project.MapForm.ZoomFactor;
-
             toolStripNumericTextBox1.Text = Project.Maps.Width.ToString();
             toolStripNumericTextBox2.Text = Project.Maps.Height.ToString();
+            toolStripNumericTextBox3.Text = Project.NumberOfMaps.ToString();
 
             ImageBox1.PixelSize = Project.Machine.PixelSize;
             ImageBox1.ImageSize = new System.Drawing.Size(Project.Machine.TextWidth, Project.Machine.TextHeight);
             ImageBox1.GridSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
+            ImageBox1.ZoomFactor = Project.MapForm.ZoomFactor;
+            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
 
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = "";
             StatusLabel3.Text = string.Format("{0} Cells", Project.Maps.Count);
             StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
-
-            toolStripNumericTextBox3.Text = Project.NumberOfMaps.ToString();
 
             if (Project.MultipleMaps == false)
             {
@@ -48,7 +45,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Initialise Paint Tools
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -69,7 +66,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Don't close the form but hide it instead
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -130,7 +127,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Move form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -140,7 +137,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Resize form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -150,7 +147,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Invalidate Map
         /// </summary>
         public new void Invalidate()
         {
@@ -162,6 +159,7 @@ namespace AcornPad.Forms
                 toolStripNumericTextBox1.Text = width.ToString();
                 toolStripNumericTextBox2.Text = height.ToString();
 
+                ImageBox1.PixelSize = Project.Machine.PixelSize;
                 ImageBox1.ImageSize = new System.Drawing.Size(width, height);
                 ImageBox1.GridSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
 
@@ -177,8 +175,8 @@ namespace AcornPad.Forms
                 {
                     width = Project.Chars.Width;
                     height = Project.Chars.Height;
-                    ImageBox1.CellSize = new System.Drawing.Size(width,height);
-                    ImageBox1.GridSize = new System.Drawing.Size(width * ImageBox1.PixelSize, height); 
+                    ImageBox1.CellSize = new System.Drawing.Size(width, height);
+                    ImageBox1.GridSize = new System.Drawing.Size(width * ImageBox1.PixelSize, height);
 
                     ImageBox1.DrawBitmapMap(Project);
                 }
@@ -190,7 +188,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Show / Hide grid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -201,7 +199,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Zoom out of Map
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -214,7 +212,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Zoom in to Map
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -227,7 +225,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Zoom in or out of map
         /// </summary>
         /// <param name="value"></param>
         private void Zoom(int value)
@@ -237,6 +235,11 @@ namespace AcornPad.Forms
             StatusLabel4.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
         }
 
+        /// <summary>
+        /// Get selected character or tile item
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private int GetItem(MouseButtons e)
         {
             switch (e)
@@ -250,7 +253,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Mouse Button Down
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -294,7 +297,7 @@ namespace AcornPad.Forms
                                 }
                                 else
                                 {
-                                     Project.Chars.SelectedItem = oldValue;
+                                    Project.Chars.SelectedItem = oldValue;
                                 }
                                 break;
 
@@ -308,7 +311,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Mouse Moved
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -366,7 +369,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Mouse Button Up
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -376,7 +379,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Zoom in and out using mouse wheel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -399,11 +402,11 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Map Width changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripNumericTextBox1_KeyUp(object sender, KeyEventArgs e)
+        private void ToolStripNumericTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -412,11 +415,11 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Map Height changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripNumericTextBox2_KeyUp(object sender, KeyEventArgs e)
+        private void ToolStripNumericTextBox2_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -425,7 +428,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Resize Map
         /// </summary>
         private void ResizeMap(KeyEventArgs e)
         {
@@ -445,7 +448,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Rotate 180
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -457,7 +460,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Rotate 90 Clockwise
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -469,7 +472,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Rotate 90 Counter Clockwise
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -481,7 +484,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Flip Horizontally
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -493,7 +496,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Flip Vertically
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -505,7 +508,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Left
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -517,7 +520,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Right
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -529,7 +532,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Up
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -541,7 +544,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Down 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

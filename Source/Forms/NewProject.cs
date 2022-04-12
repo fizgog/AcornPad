@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AcornPad.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +23,9 @@ namespace AcornPad.Forms
         /// <summary>
         ///
         /// </summary>
-        private List<Machine> machineList;
+        private List<Machine> MachineList;
+
+        public List<Machine> GetMachineList => MachineList.Where(w => w.MachineType == GetMachine.MachineType).ToList();
 
         /// <summary>
         ///
@@ -40,14 +43,16 @@ namespace AcornPad.Forms
         private void NewProject_Load(object sender, EventArgs e)
         {
             // Load json file into machine array
-            using (StreamReader r = new StreamReader("Machine.json"))
-            {
-                string json = r.ReadToEnd();
-                machineList = JsonConvert.DeserializeObject<List<Machine>>(json);
-            }
+            //using (StreamReader r = new StreamReader("Machine.json"))
+            //{
+            //    string json = r.ReadToEnd();
+            //    MachineList = JsonConvert.DeserializeObject<List<Machine>>(json);
+            //}
+
+            MachineList = Sys.GetMachineList();
 
             // Get all machine types
-            List<string> distinctList = machineList.Select(x => x.MachineType).Distinct().ToList();
+            List<string> distinctList = MachineList.Select(x => x.MachineType).Distinct().ToList();
 
             // Populate Machine combobox with machine types
             foreach (var itm in distinctList)
@@ -67,7 +72,7 @@ namespace AcornPad.Forms
         {
             ComboBoxGfxMode.Items.Clear();
 
-            foreach (var itm in machineList)
+            foreach (var itm in MachineList)
             {
                 if (itm.MachineType == ComboBoxMachine.SelectedItem.ToString())
                     ComboBoxGfxMode.Items.Add(itm.Description);
@@ -83,7 +88,7 @@ namespace AcornPad.Forms
         /// <param name="e"></param>
         private void ButtonOK_Click(object sender, EventArgs e)
         {
-            foreach (var itm in machineList)
+            foreach (var itm in MachineList)
             {
                 if (itm.Description == ComboBoxGfxMode.SelectedItem.ToString())
                 {

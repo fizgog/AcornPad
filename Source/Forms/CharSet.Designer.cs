@@ -47,8 +47,14 @@ namespace AcornPad.Forms
             this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ImageBox1 = new AcornPad.Controls.ImageBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.colourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -62,7 +68,7 @@ namespace AcornPad.Forms
             this.toolStripNumericTextBox1,
             this.toolStripSeparator2,
             this.ButtonCompress});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(400, 25);
@@ -183,14 +189,14 @@ namespace AcornPad.Forms
             this.ImageBox1.Image = null;
             this.ImageBox1.ImageRect = new System.Drawing.Rectangle(0, 0, 192, 192);
             this.ImageBox1.ImageSize = new System.Drawing.Size(64, 1);
-            this.ImageBox1.Location = new System.Drawing.Point(0, 25);
+            this.ImageBox1.Location = new System.Drawing.Point(0, 49);
             this.ImageBox1.Name = "ImageBox1";
             this.ImageBox1.PaintTool = 0;
             this.ImageBox1.PixelFormatString = null;
             this.ImageBox1.PixelSize = 1;
             this.ImageBox1.ShowGrid = true;
             this.ImageBox1.ShowTileGrid = false;
-            this.ImageBox1.Size = new System.Drawing.Size(400, 353);
+            this.ImageBox1.Size = new System.Drawing.Size(400, 329);
             this.ImageBox1.TabIndex = 9;
             this.ImageBox1.ZoomFactor = 24;
             this.ImageBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageBox1_Paint);
@@ -198,12 +204,54 @@ namespace AcornPad.Forms
             this.ImageBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseMove);
             this.ImageBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseUp);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.colourToolStripMenuItem});
+            this.editToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // colourToolStripMenuItem
+            // 
+            this.colourToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.replaceColourToolStripMenuItem});
+            this.colourToolStripMenuItem.Name = "colourToolStripMenuItem";
+            this.colourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colourToolStripMenuItem.Text = "Colour";
+            // 
+            // replaceColourToolStripMenuItem
+            // 
+            this.replaceColourToolStripMenuItem.Name = "replaceColourToolStripMenuItem";
+            this.replaceColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.replaceColourToolStripMenuItem.Text = "Replace Colour...";
+            this.replaceColourToolStripMenuItem.Click += new System.EventHandler(this.ReplaceColourToolStripMenuItem_Click);
+            // 
             // CharSet
             // 
             this.ClientSize = new System.Drawing.Size(400, 400);
             this.Controls.Add(this.ImageBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "CharSet";
@@ -217,6 +265,8 @@ namespace AcornPad.Forms
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +288,10 @@ namespace AcornPad.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ButtonCompress;
         private WindowsFormsApp1.Controls.ToolStripNumericTextBox toolStripNumericTextBox1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem3;
+        private ToolStripMenuItem colourToolStripMenuItem;
+        private ToolStripMenuItem replaceColourToolStripMenuItem;
     }
 }

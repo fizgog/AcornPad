@@ -21,20 +21,16 @@ namespace AcornPad.Forms
             InitializeComponent();
             Project = project;
 
-            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
-
             Location = Project.TileEditForm.Location;
             Size = Project.TileEditForm.Size;
 
             ImageBox1.ZoomFactor = Project.TileEditForm.ZoomFactor;
             ImageBox1.PixelSize = Project.Machine.PixelSize;
             ImageBox1.ImageSize = new System.Drawing.Size(Project.Tiles.Width, Project.Tiles.Height);
-
-            //ImageBox1.CellSize = new System.Drawing.Size(Project.Tiles.Width * Project.Chars.Width, Project.Tiles.Height * Project.Chars.Height);
-
             ImageBox1.ShowTileGrid = true;
             ImageBox1.GridSize = new System.Drawing.Size(1 * ImageBox1.PixelSize, 1);
             ImageBox1.GridTileSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
+            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
 
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = "";
@@ -155,7 +151,10 @@ namespace AcornPad.Forms
                 int width = Project.Tiles.Width;
                 int height = Project.Tiles.Height;
 
+                ImageBox1.PixelSize = Project.Machine.PixelSize;
                 ImageBox1.ImageSize = new System.Drawing.Size(width, height);
+                ImageBox1.GridSize = new System.Drawing.Size(1 * ImageBox1.PixelSize, 1);
+                ImageBox1.GridTileSize = new System.Drawing.Size(Project.Chars.Width * ImageBox1.PixelSize, Project.Chars.Height);
 
                 ImageBox1.DrawBitmapTile(Project);
                 StatusLabel3.Text = string.Format("Tile {0} (${0:X2})", Project.Tiles.SelectedItem);
@@ -347,7 +346,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Flip Horizontally
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -359,7 +358,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Flip Vertically
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -371,7 +370,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Up
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -383,7 +382,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Right
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -395,7 +394,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Up
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -407,7 +406,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        ///
+        /// Transform: Shift Down
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -419,7 +418,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// Tile Negative
+        /// Colour Negative
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -438,6 +437,33 @@ namespace AcornPad.Forms
 
             Project.Chars.SelectedItem = savedSelectedItem;
             TileEdit_ImageChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReplaceColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReplaceColour frm = new ReplaceColour(Project);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (frm.OldColour != frm.NewColour)
+                {
+                    Project.AddHistory("Tile Replace Colour");
+
+                    int[] tileData = Project.Tiles.Items[Project.Tiles.SelectedItem].Data.Distinct().ToArray();
+
+                    foreach (var selectedItem in tileData)
+                    {
+                        Project.Chars.Negative(Project.Palette.NumColours);
+                        Project.Chars.Items[selectedItem].ReplaceColour(frm.OldColour, frm.NewColour);
+                    }
+
+                    TileEdit_ImageChanged?.Invoke(this, e);
+                }
+            }
         }
     }
 }

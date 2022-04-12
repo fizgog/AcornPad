@@ -88,6 +88,7 @@ namespace AcornPad
             this.ButtonCut = new System.Windows.Forms.ToolStripButton();
             this.ButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.ButtonPaste = new System.Windows.Forms.ToolStripButton();
+            this.importBinaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -380,6 +381,7 @@ namespace AcornPad
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importImageToolStripMenuItem,
+            this.importBinaryToolStripMenuItem,
             this.ExportToScreenToolStripMenuItem,
             this.toolStripMenuItem6,
             this.ClipboardHistoryToolStripMenuItem,
@@ -392,39 +394,39 @@ namespace AcornPad
             // importImageToolStripMenuItem
             // 
             this.importImageToolStripMenuItem.Name = "importImageToolStripMenuItem";
-            this.importImageToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.importImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importImageToolStripMenuItem.Text = "Import Image";
             this.importImageToolStripMenuItem.Click += new System.EventHandler(this.importImageToolStripMenuItem_Click);
             // 
             // ExportToScreenToolStripMenuItem
             // 
             this.ExportToScreenToolStripMenuItem.Name = "ExportToScreenToolStripMenuItem";
-            this.ExportToScreenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ExportToScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExportToScreenToolStripMenuItem.Text = "Export to Screen";
             this.ExportToScreenToolStripMenuItem.Click += new System.EventHandler(this.ExportToScreenToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(164, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
             // 
             // ClipboardHistoryToolStripMenuItem
             // 
             this.ClipboardHistoryToolStripMenuItem.Name = "ClipboardHistoryToolStripMenuItem";
-            this.ClipboardHistoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ClipboardHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ClipboardHistoryToolStripMenuItem.Text = "Clipboard History";
             this.ClipboardHistoryToolStripMenuItem.Click += new System.EventHandler(this.ClipboardHistoryToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(164, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
             // 
             // OptionsToolStripMenuItem
             // 
             this.OptionsToolStripMenuItem.Image = global::AcornPad.Properties.Resources.Cog;
             this.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem";
-            this.OptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.OptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OptionsToolStripMenuItem.Text = "Options...";
             this.OptionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
             // 
@@ -580,6 +582,13 @@ namespace AcornPad
             this.ButtonPaste.Text = "Paste";
             this.ButtonPaste.Click += new System.EventHandler(this.PasteTool_Click);
             // 
+            // importBinaryToolStripMenuItem
+            // 
+            this.importBinaryToolStripMenuItem.Name = "importBinaryToolStripMenuItem";
+            this.importBinaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importBinaryToolStripMenuItem.Text = "Import Binary";
+            this.importBinaryToolStripMenuItem.Click += new System.EventHandler(this.ImportBinaryToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(807, 486);
@@ -663,6 +672,7 @@ namespace AcornPad
         private System.Windows.Forms.ToolStripMenuItem ExportMapToScreenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ReleaseNotesMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem importBinaryToolStripMenuItem;
     }
 }
 

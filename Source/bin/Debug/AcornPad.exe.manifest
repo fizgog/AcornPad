@@ -4,7 +4,7 @@
   <description asmv2:iconFile="acorn.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AcornPad" version="1.0.5.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AcornPad" version="1.0.6.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="AcornPad.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="784400">
-      <assemblyIdentity name="AcornPad" version="1.0.5.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="868880">
+      <assemblyIdentity name="AcornPad" version="1.0.6.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Q2M/FsQT/YZ/wsccFzTD6GsazEtM0wSw624agdEB7zA=</dsig:DigestValue>
+        <dsig:DigestValue>supICLcg9WagrFIjJnbw1ZtRcY3ZwSIkwU6ngDZDE+w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -132,13 +132,13 @@
       <dsig:DigestValue>lP/NBl3eG/Knt4uAAbnDFZ+Kn/2VzeRaXz9+hlbfYYE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ReleaseNotes.html" size="4231">
+  <file name="ReleaseNotes.html" size="4744">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>T4RwvY2r7cwJg512HF8k6Zlx7vBHzn6licDnNG77zqE=</dsig:DigestValue>
+      <dsig:DigestValue>X9TNGI4un43cBYC/S5MlkAjUduKnFeq16I/2IxMuLtA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\brush.png" size="301">

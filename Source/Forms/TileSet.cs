@@ -10,8 +10,8 @@ namespace AcornPad.Forms
         private const int ZOOM_MIN_FACTOR = 2;
         private const int ZOOM_MAX_FACTOR = 10;
 
-        private Color purple = Color.FromArgb(113, 96, 232);
-        private Color green = Color.FromArgb(108, 203, 95);
+        private readonly Color purple = Color.FromArgb(113, 96, 232);
+        private readonly Color green = Color.FromArgb(108, 203, 95);
 
         private readonly AcornProject Project;
 
@@ -22,25 +22,21 @@ namespace AcornPad.Forms
             InitializeComponent();
             Project = project;
 
-            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
-
             Location = Project.TileSetForm.Location;
             Size = Project.TileSetForm.Size;
 
-            ImageBox1.ZoomFactor = Project.TileSetForm.ZoomFactor;
-
             toolStripNumericTextBox1.Text = Project.Tiles.Count.ToString();
-
-            ImageBox1.PixelSize = Project.Machine.PixelSize;
+            ToolStripTable1.TableControl.SelectedSize = new Size(Project.Tiles.Width, Project.Tiles.Height);
+            ToolStripSplitButton1.Text = String.Format("{0} x {1}", ToolStripTable1.TableControl.SelectedSize.Width, ToolStripTable1.TableControl.SelectedSize.Height);
 
             int width = Project.Tiles.Width * Project.Chars.Width;
             int height = Project.Tiles.Height * Project.Chars.Height;
             ImageBox1.CellSize = new System.Drawing.Size(width, height);
+            ImageBox1.PixelSize = Project.Machine.PixelSize;
             ImageBox1.GridSize = new System.Drawing.Size(width * ImageBox1.PixelSize, height);
-
-            ToolStripTable1.TableControl.SelectedSize = new Size(Project.Tiles.Width, Project.Tiles.Height);
-            ToolStripSplitButton1.Text = String.Format("{0} x {1}", ToolStripTable1.TableControl.SelectedSize.Width, ToolStripTable1.TableControl.SelectedSize.Height);
-
+            ImageBox1.MouseWheel += ImageBox1_MouseWheel;
+            ImageBox1.ZoomFactor = Project.TileSetForm.ZoomFactor;
+          
             StatusLabel1.Text = "Ready";
             StatusLabel2.Text = string.Format("{0} Bytes", Project.Tiles.TotalBytes);
             StatusLabel3.Text = string.Format("Zoom x{0}", ImageBox1.ZoomFactor);
@@ -108,6 +104,8 @@ namespace AcornPad.Forms
 
                 height = height > 0 ? height : 1;
 
+                ImageBox1.PixelSize = Project.Machine.PixelSize;
+                ImageBox1.GridSize = new System.Drawing.Size(width * ImageBox1.PixelSize, height);
                 ImageBox1.ImageSize = new Size(width, height);
 
                 ImageBox1.DrawBitmapTileSet(Project);
@@ -341,7 +339,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="keyData"></param>
@@ -368,7 +366,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="newValue"></param>
         /// <returns></returns>

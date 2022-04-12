@@ -331,6 +331,19 @@ namespace AcornPad
         }
 
         /// <summary>
+        ///
+        /// </summary>
+        /// <param name="oldColour"></param>
+        /// <param name="newColour"></param>
+        public void ReplaceColour(int oldColour, int newColour)
+        {
+            for (int index = 0; index < Count; index++)
+            {
+                if (Data[index] == oldColour) Data[index] = newColour;
+            }
+        }
+
+        /// <summary>
         /// 2, 4 and 16 colour depth
         /// </summary>
         /// <param name="colourDepth"></param>

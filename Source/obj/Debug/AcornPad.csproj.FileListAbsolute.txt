@@ -12,7 +12,6 @@ Z:\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\System.Numerics.Vector
 Z:\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 Z:\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\Newtonsoft.Json.xml
 Z:\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.BeebPalette.resources
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.ImageBox.resources
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.AboutBox.resources
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ExportScreen.resources
@@ -52,7 +51,6 @@ Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.Assemb
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\Newtonsoft.Json.xml
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.AssemblyReference.cache
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.ImageBox.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.AboutBox.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ExportScreen.resources
@@ -78,3 +76,8 @@ Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.Assemb
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.exe
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.pdb
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.AcornPalette.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ReplaceColour.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.AssemblyReference.cache
+Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.AcornPalette.resources
+Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ReplaceColour.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ImportBin.resources

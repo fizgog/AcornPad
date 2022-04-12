@@ -212,7 +212,7 @@ namespace AcornPad.Forms
             this.toolStripNumericTextBox1.Name = "toolStripNumericTextBox1";
             this.toolStripNumericTextBox1.Size = new System.Drawing.Size(50, 25);
             this.toolStripNumericTextBox1.Text = "1";
-            this.toolStripNumericTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.toolStripNumericTextBox1_KeyUp);
+            this.toolStripNumericTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox1_KeyUp);
             // 
             // toolStripLabel2
             // 
@@ -227,7 +227,7 @@ namespace AcornPad.Forms
             this.toolStripNumericTextBox2.Name = "toolStripNumericTextBox2";
             this.toolStripNumericTextBox2.Size = new System.Drawing.Size(50, 25);
             this.toolStripNumericTextBox2.Text = "1";
-            this.toolStripNumericTextBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.toolStripNumericTextBox2_KeyUp);
+            this.toolStripNumericTextBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox2_KeyUp);
             // 
             // statusStrip1
             // 

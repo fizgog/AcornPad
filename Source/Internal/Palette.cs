@@ -315,11 +315,11 @@ namespace AcornPad.Internal
         /// </summary>
         /// <param name="origCol"></param>
         /// <returns></returns>
-        public Color FindClosestSatBrightColour(Color origCol)
+        public Color FindClosestSatBrightColour(Color origCol, int saturation, int brightness)
         {
             float hue1 = origCol.GetHue();
-            var num1 = GetWeightedSatBright(origCol);
-            var diffs = WinColours.ToList().Select(n => Math.Abs(GetWeightedSatBright(n) - num1) + GetHueDistance(n.GetHue(), hue1));
+            var num1 = GetWeightedSatBright(origCol,saturation,brightness);
+            var diffs = WinColours.ToList().Select(n => Math.Abs(GetWeightedSatBright(n,saturation, brightness) - num1) + GetHueDistance(n.GetHue(), hue1));
             var diffMin = diffs.Min(x => x);
             int col = diffs.ToList().FindIndex(n => n == diffMin);
 
@@ -329,7 +329,7 @@ namespace AcornPad.Internal
         }
 
         /// <summary>
-        ///
+        /// Weighed only by saturation and brightness
         /// </summary>
         /// <param name="c1"></param>
         /// <param name="c2"></param>
@@ -366,10 +366,13 @@ namespace AcornPad.Internal
         /// Weighed only by saturation and brightness
         /// </summary>
         /// <param name="c"></param>
+        /// <param name="saturation"></param>
+        /// <param name="brightness"></param>
         /// <returns></returns>
-        private float GetWeightedSatBright(Color c)
+        private float GetWeightedSatBright(Color c, int saturation, int brightness)
         {
-            return c.GetSaturation() * 100 + GetBrightness(c) * 100;
+            return c.GetSaturation() * saturation + GetBrightness(c) * brightness;
         }
+        
     }
 }

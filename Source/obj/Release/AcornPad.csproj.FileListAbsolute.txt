@@ -27,6 +27,7 @@
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.CharSet.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ClipboardHistory.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ReleaseNotes.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ReplaceColour.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.TileEdit.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.TileSet.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Properties.Resources.resources
