@@ -6,7 +6,6 @@ Windows character, tile and map editor for the Acorn Atom and BBC Micro
 
 
 <h1>AcornPad 1.0.6</h1>
-<hr />
 
 <h2>Version 1.06 Release</h2>
 <h3>New</h3>
