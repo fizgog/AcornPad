@@ -440,18 +440,7 @@ namespace AcornPad
                         int oldValue = imgArray.Items[j].Id;
 
                         RemapData(imgArray.ImageDataType == DataType.Char && usingTiles ? Tiles : Maps, oldValue, newValue);
-                        //if (imgArray.ImageDataType == DataType.Char && usingTiles)
-                        //{
-                        //    for(int k=0; k < Tiles.Count; k++)
-                        //    {
-                        //        Tiles.Items[k].RemapData(oldValue,newValue);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    Maps.Items[Maps.SelectedItem].RemapData(oldValue, newValue);
-                        //}
-
+                  
                         imgArray.Items.RemoveAt(j);
                         j--;
                     }
@@ -459,23 +448,6 @@ namespace AcornPad
             }
 
             // Reset the id to the index
-            //for (int i = 0; i < imgArray.Count; i++)
-            //{
-            //    int oldValue = imgArray.Items[i].Id;
-
-            //    if (imgArray.ImageDataType == DataType.Char && usingTiles)
-            //    {
-            //        for (int k = 0; k < Tiles.Count; k++)
-            //        {
-            //            Tiles.Items[k].RemapData(oldValue, i);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Maps.Items[Maps.SelectedItem].RemapData(oldValue, i);
-            //    }
-            //    imgArray.Items[i].Id = i;
-            //}
             ResyncMap(imgArray, usingTiles);
 
             // set the selectors
