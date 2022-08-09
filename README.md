@@ -1,6 +1,6 @@
 # AcornPad
 
-Windows character, tile and map editor for the Acorn Atom and BBC Micro
+Windows character, tile and map editor for the Acorn Atom and BBC Micro, based from screenshots of the Commodore 64 CharPad
 
 <img src="Images/AcornPad.png" alt="AcornPad"/>
 
