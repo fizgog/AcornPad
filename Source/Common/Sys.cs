@@ -125,7 +125,7 @@ namespace AcornPad.Common
         /// <param name="height"></param>
         /// <param name="Data"></param>
         /// <returns></returns>
-        public static int[] Compress(int width, int height, int[] Data)
+        public static int[] Compress(int width, int height, int[] Data, CompressionType compression)
         {
             List<int> tmpData = new List<int>();
 
@@ -154,6 +154,42 @@ namespace AcornPad.Common
 
                 tmpData.Add(counter);
             }
+
+            return tmpData.ToArray();
+        }
+
+        public static int[] Compress(int[] Data, int width)
+        {
+            List<int> tmpData = new List<int>();
+
+            int counter = 0;
+            int oldValue = -1;
+            int newValue = 0;
+
+            for(int index=0; index < Data.Length; index ++)
+            {
+                newValue = Data[index];
+             
+                if ((newValue != oldValue) || (counter >= width))
+                {
+                    if ((oldValue != -1) || (counter >= width))
+                    {
+                        int comValue = (width == 15) ? counter << 4 : counter << 3;
+                        comValue += newValue;
+
+                        tmpData.Add(comValue);
+                        counter = 0;
+                    }
+                }
+
+                oldValue = newValue;
+                counter++;
+      
+            }
+
+            counter = (width == 15) ? counter << 4 : counter << 3;
+            newValue += counter;
+            tmpData.Add(newValue);
 
             return tmpData.ToArray();
         }
@@ -358,7 +394,7 @@ namespace AcornPad.Common
         /// <param name="comments"></param>
         /// <param name="conversion"></param>
         /// <param name="compression"></param>
-        public static void GenerateMap(AcornProject Project, AcornPad.Controls.RichTextBox rtb, int selectedItem, ExportFormatType format, int columns, int digits, bool comments, ConversionType conversion, bool compression)
+        public static void GenerateMap(AcornProject Project, AcornPad.Controls.RichTextBox rtb, int selectedItem, ExportFormatType format, int columns, int digits, bool comments, ConversionType conversion, CompressionType compression)
         {
             rtb.AppendText(Environment.NewLine);
             rtb.AppendText(string.Format("{0}Map_{1}", format == ExportFormatType.BeebASM ? "." : "", selectedItem));
@@ -366,7 +402,27 @@ namespace AcornPad.Common
             int width = Project.Maps.Items[selectedItem].Width;
             int height = Project.Maps.Items[selectedItem].Height;
 
-            int[] test = (compression) ? Sys.Compress(width, height, Project.Maps.Items[0].Data) : Project.Maps.Items[selectedItem].Data;
+            // int[] test = (compression != CompressionType.None) ? Sys.Compress(width, height, Project.Maps.Items[0].Data, compression) : Project.Maps.Items[selectedItem].Data;
+            int[] test;
+            
+            switch (compression)
+            {
+                case CompressionType.Run_length:
+                    test = Sys.Compress(width, height, Project.Maps.Items[0].Data, compression);
+                    break;
+
+                case CompressionType.Four_Four:
+                    test = Sys.Compress(Project.Maps.Items[0].Data, 15);
+                    break;
+
+                case CompressionType.Five_Three:
+                    test = Sys.Compress(Project.Maps.Items[0].Data, 31);
+                    break;
+
+                default:
+                        test = Project.Maps.Items[selectedItem].Data;
+                    break;
+            }
 
             if (comments)
             {
@@ -378,7 +434,7 @@ namespace AcornPad.Common
                 rtb.AppendText(", ");
                 rtb.AppendText(Sys.Format(Project.Maps.Items[selectedItem].Count, digits, conversion));
 
-                if (compression)
+                if (compression != CompressionType.None)
                 {
                     rtb.AppendText(", ");
                     rtb.AppendText(Sys.Format(test.Length, digits, conversion));
@@ -386,9 +442,9 @@ namespace AcornPad.Common
 
                 rtb.AppendText(" ; Width, Height, Size");
 
-                if (compression)
+                if (compression != CompressionType.None)
                 {
-                    rtb.AppendText(", Compressed");
+                    rtb.AppendText(", Compressed using " + compression.ToString());
                 }
             }
 
@@ -398,7 +454,7 @@ namespace AcornPad.Common
             {
                 if (i % columns == 0)
                 {
-                    if (i != 0 && comments)
+                    if (i != 0 && comments & compression == CompressionType.None)
                         PrintCommentMap(Project, rtb, selectedItem, commentLine++, width, height);
 
                     rtb.AppendText(Environment.NewLine);

@@ -151,7 +151,7 @@ namespace AcornPad.Forms
             ConversionType MapConversion = (ConversionType)ComboBoxConversionMap.SelectedItem;
             bool MapComments = CheckBoxCommentsMap.Checked;
             int MapColumns = (int)NumericUpDownColumnMap.Value;
-            bool compression = (ComboBoxCompressionMap.SelectedIndex == 1);
+            CompressionType compression = (CompressionType)ComboBoxCompressionMap.SelectedItem;
 
             switch (tabControl1.SelectedIndex)
             {
@@ -246,7 +246,7 @@ namespace AcornPad.Forms
         /// <summary>
         /// Generate map into a RichTextBox
         /// </summary>
-        private void GenerateMaps(ExportFormatType format, ConversionType conversion, bool comments, int columns, bool compression)
+        private void GenerateMaps(ExportFormatType format, ConversionType conversion, bool comments, int columns, CompressionType compression)
         {
             int digits = 3;
             int width = Project.Maps.Width;

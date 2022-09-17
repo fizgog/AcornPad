@@ -1115,7 +1115,7 @@ namespace AcornPad
 
             decimal columns = (decimal)Properties.Settings.Default["Map_Columns_2"];
 
-            bool compression = compressionType != CompressionType.None;
+            //bool compression = compressionType != CompressionType.None;
 
             int width = Project.Maps.Items[0].Width;
             int height = Project.Maps.Items[0].Height;
@@ -1128,7 +1128,7 @@ namespace AcornPad
 
             for (int i = 0; i < Project.Maps.Count; i++)
             {
-                Sys.GenerateMap(Project, rtb, i, format, (int)columns, digits, comments, conversion, compression);
+                Sys.GenerateMap(Project, rtb, i, format, (int)columns, digits, comments, conversion, compressionType);
             }
 
             rtb.AppendText(Environment.NewLine);

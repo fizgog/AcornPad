@@ -77,7 +77,6 @@ Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.Assemb
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.pdb
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.AcornPalette.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ReplaceColour.resources
-\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.AssemblyReference.cache
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.AcornPalette.resources
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ReplaceColour.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ImportBin.resources

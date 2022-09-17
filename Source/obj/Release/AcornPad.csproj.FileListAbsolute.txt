@@ -16,6 +16,7 @@
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Controls.ImageBox.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.AboutBox.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ExportScreen.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ImportBin.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ImportImage.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.NewProject.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.NewTileSize.resources
@@ -38,4 +39,3 @@
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.csproj.CopyComplete
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.exe
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.pdb
-\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.csproj.AssemblyReference.cache
