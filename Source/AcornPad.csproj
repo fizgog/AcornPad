@@ -133,6 +133,10 @@
     <Compile Include="Forms\ImportBin.Designer.cs">
       <DependentUpon>ImportBin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ImportFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportFile.Designer.cs" />
     <Compile Include="Forms\NewTileSize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +293,7 @@
     <EmbeddedResource Include="Forms\ImportBin.resx">
       <DependentUpon>ImportBin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportFile.resx" />
     <EmbeddedResource Include="Forms\ImportImage.resx">
       <DependentUpon>ImportImage.cs</DependentUpon>
     </EmbeddedResource>

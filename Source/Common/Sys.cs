@@ -643,5 +643,78 @@ namespace AcornPad.Common
         {
             return palette[index];
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="charByte"></param>
+        /// <returns></returns>
+        public static List<int> Unpack_BBC_Byte(Machine machine, int charByte)
+        {
+            List<int> bits = new List<int>();
+
+            // 8 bits
+            if (machine.PixelsBerByte == 8) //(machine.Mode == "0" || machine.Mode == "4")
+            {
+                bits.Add((charByte >> 7) & 0x01);
+                bits.Add((charByte >> 6) & 0x01);
+                bits.Add((charByte >> 5) & 0x01);
+                bits.Add((charByte >> 4) & 0x01);
+                bits.Add((charByte >> 3) & 0x01);
+                bits.Add((charByte >> 2) & 0x01);
+                bits.Add((charByte >> 1) & 0x01);
+                bits.Add((charByte) & 0x01);
+            }
+
+            // 4 bits
+            else if (machine.PixelsBerByte == 4) //(machine.Mode == "1" || machine.Mode == "5")
+            {
+                bits.Add(((charByte >> 6) & 0x02) | ((charByte >> 3) & 0x01));
+                bits.Add(((charByte >> 5) & 0x02) | ((charByte >> 2) & 0x01));
+                bits.Add(((charByte >> 4) & 0x02) | ((charByte >> 1) & 0x01));
+                bits.Add(((charByte >> 3) & 0x02) | ((charByte) & 0x01));
+            }
+
+            // 2 bits
+            else if (machine.PixelsBerByte == 2) //(machine.Mode == "2")
+            {
+                bits.Add(((charByte >> 4) & 0x08) | ((charByte >> 3) & 0x04) | ((charByte >> 2) & 0x02) | ((charByte >> 1) & 0x01));
+                bits.Add(((charByte >> 3) & 0x08) | ((charByte >> 2) & 0x04) | ((charByte >> 1) & 0x02) | (charByte & 0x01));
+            }
+
+            return bits;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <param name="charByte"></param>
+        /// <returns></returns>
+        public static List<int> Unpack_Atom_Byte(Machine machine, int charByte)
+        {
+            List<int> bits = new List<int>();
+
+            if (machine.BitsPerPixel == 8)
+            {
+                bits.Add((charByte >> 7) & 0x01);
+                bits.Add((charByte >> 6) & 0x01);
+                bits.Add((charByte >> 5) & 0x01);
+                bits.Add((charByte >> 4) & 0x01);
+                bits.Add((charByte >> 3) & 0x01);
+                bits.Add((charByte >> 2) & 0x01);
+                bits.Add((charByte >> 1) & 0x01);
+                bits.Add((charByte) & 0x01);
+            }
+            else if (machine.BitsPerPixel == 4)
+            {
+                bits.Add((charByte >> 6) & 0x03);
+                bits.Add((charByte >> 4) & 0x03);
+                bits.Add((charByte >> 2) & 0x03);
+                bits.Add((charByte) & 0x03);
+            }
+
+            return bits;
+        }
     }
 }

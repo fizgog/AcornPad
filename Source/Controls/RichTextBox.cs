@@ -66,5 +66,22 @@ namespace AcornPad.Controls
             //AppendText(text);
             SelectionColor = ForeColor;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string[] SplitText()
+        {
+            if (InvokeRequired)
+            {
+                var text = (string)Invoke(new Func<string>(() => Text));
+
+                return text.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            return base.Text.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+        }
     }
 }

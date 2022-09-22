@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AcornPad.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Options_Format_1" Type="AcornPad.Common.ExportFormatType" Scope="User">
+      <Value Profile="(Default)">BeebASM</Value>
+    </Setting>
+    <Setting Name="Options_Conversion_2" Type="AcornPad.Common.ConversionType" Scope="User">
+      <Value Profile="(Default)">Decimal</Value>
+    </Setting>
+    <Setting Name="Options_Comments_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Character_Name_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">char_sprite</Value>
+    </Setting>
+    <Setting Name="Character_Layout_2" Type="AcornPad.Common.LayoutType" Scope="User">
+      <Value Profile="(Default)">Row</Value>
+    </Setting>
+    <Setting Name="Character_Prefix_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Character_Columns_4" Type="AcornPad.Common.ColumnType" Scope="User">
+      <Value Profile="(Default)">Four</Value>
+    </Setting>
+    <Setting Name="Map_Compression_1" Type="AcornPad.Common.CompressionType" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="Map_Columns_2" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="AcornPad_Backdrop_1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Tile_Columns_1" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

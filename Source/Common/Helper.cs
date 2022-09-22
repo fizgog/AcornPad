@@ -86,6 +86,40 @@ namespace AcornPad
         ///
         /// </summary>
         /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int FromBinary(this object obj)
+        {
+            int result = 0;
+
+            if (obj != null)
+            {
+                result = Convert.ToInt32(obj.ToString().Replace("%", ""), 2);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int FromHex(this object obj)
+        {
+            int result = 0;
+
+            if (obj != null)
+            {
+                result = Convert.ToInt32(obj.ToString().Replace("$", "").Replace("&", ""), 16);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="obj"></param>
         /// <param name="digits"></param>
         /// <returns></returns>
         public static string ToHex(this Object obj)

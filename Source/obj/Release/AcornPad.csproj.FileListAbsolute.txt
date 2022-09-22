@@ -39,3 +39,4 @@
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.csproj.CopyComplete
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.exe
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.pdb
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Release\AcornPad.Forms.ImportFile.resources

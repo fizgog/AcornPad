@@ -66,6 +66,7 @@ namespace AcornPad
             this.MapEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importBinaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExportToScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ClipboardHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,13 +89,14 @@ namespace AcornPad
             this.ButtonCut = new System.Windows.Forms.ToolStripButton();
             this.ButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.ButtonPaste = new System.Windows.Forms.ToolStripButton();
-            this.importBinaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem1,
             this.editToolStripMenuItem,
@@ -104,7 +106,7 @@ namespace AcornPad
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(807, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(807, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,7 +125,7 @@ namespace AcornPad
             this.toolStripMenuItem7,
             this.ExitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(72, 38);
             this.fileToolStripMenuItem1.Text = "&File";
             // 
             // NewToolStripMenuItem
@@ -132,7 +134,7 @@ namespace AcornPad
             this.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewToolStripMenuItem.Name = "NewToolStripMenuItem";
             this.NewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.NewToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.NewToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.NewToolStripMenuItem.Text = "&New Project";
             this.NewToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
@@ -142,14 +144,14 @@ namespace AcornPad
             this.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.OpenToolStripMenuItem.Text = "&Open Project";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(371, 6);
             // 
             // SaveToolStripMenuItem
             // 
@@ -157,21 +159,21 @@ namespace AcornPad
             this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
             this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.SaveToolStripMenuItem.Text = "&Save Project";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.SaveAsToolStripMenuItem.Text = "Save Project &As";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(371, 6);
             // 
             // ExportToolStripMenuItem
             // 
@@ -179,7 +181,7 @@ namespace AcornPad
             this.ExportToASMToolStripMenuItem,
             this.ExportMapToScreenToolStripMenuItem});
             this.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem";
-            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.ExportToolStripMenuItem.Text = "Export";
             // 
             // ExportToASMToolStripMenuItem
@@ -191,70 +193,70 @@ namespace AcornPad
             this.exportTileSetToolStripMenuItem,
             this.exportMapToolStripMenuItem});
             this.ExportToASMToolStripMenuItem.Name = "ExportToASMToolStripMenuItem";
-            this.ExportToASMToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.ExportToASMToolStripMenuItem.Size = new System.Drawing.Size(379, 44);
             this.ExportToASMToolStripMenuItem.Text = "Export to ASM";
             // 
             // ExportAllToolStripMenuItem
             // 
             this.ExportAllToolStripMenuItem.Name = "ExportAllToolStripMenuItem";
-            this.ExportAllToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.ExportAllToolStripMenuItem.Size = new System.Drawing.Size(380, 44);
             this.ExportAllToolStripMenuItem.Text = "Export All";
             this.ExportAllToolStripMenuItem.Click += new System.EventHandler(this.ExportASMToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(187, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(377, 6);
             // 
             // exportCharacterSetToolStripMenuItem
             // 
             this.exportCharacterSetToolStripMenuItem.Name = "exportCharacterSetToolStripMenuItem";
-            this.exportCharacterSetToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.exportCharacterSetToolStripMenuItem.Size = new System.Drawing.Size(380, 44);
             this.exportCharacterSetToolStripMenuItem.Text = "Export Character Set...";
             this.exportCharacterSetToolStripMenuItem.Click += new System.EventHandler(this.ExportCharacterSetToolStripMenuItem_Click);
             // 
             // exportTileSetToolStripMenuItem
             // 
             this.exportTileSetToolStripMenuItem.Name = "exportTileSetToolStripMenuItem";
-            this.exportTileSetToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.exportTileSetToolStripMenuItem.Size = new System.Drawing.Size(380, 44);
             this.exportTileSetToolStripMenuItem.Text = "Export Tile Set...";
             this.exportTileSetToolStripMenuItem.Click += new System.EventHandler(this.ExportTileSetToolStripMenuItem_Click);
             // 
             // exportMapToolStripMenuItem
             // 
             this.exportMapToolStripMenuItem.Name = "exportMapToolStripMenuItem";
-            this.exportMapToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.exportMapToolStripMenuItem.Size = new System.Drawing.Size(380, 44);
             this.exportMapToolStripMenuItem.Text = "Export Map...";
             this.exportMapToolStripMenuItem.Click += new System.EventHandler(this.ExportMapToolStripMenuItem_Click);
             // 
             // ExportMapToScreenToolStripMenuItem
             // 
             this.ExportMapToScreenToolStripMenuItem.Name = "ExportMapToScreenToolStripMenuItem";
-            this.ExportMapToScreenToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.ExportMapToScreenToolStripMenuItem.Size = new System.Drawing.Size(379, 44);
             this.ExportMapToScreenToolStripMenuItem.Text = "Export Map to Screen";
             this.ExportMapToScreenToolStripMenuItem.Click += new System.EventHandler(this.ExportMapToScreenToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(371, 6);
             // 
             // RecentFilesToolStripMenuItem
             // 
             this.RecentFilesToolStripMenuItem.Name = "RecentFilesToolStripMenuItem";
-            this.RecentFilesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.RecentFilesToolStripMenuItem.Size = new System.Drawing.Size(374, 44);
             this.RecentFilesToolStripMenuItem.Text = "Recent Files";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(183, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(371, 6);
             // 
             // ExitToolStripMenuItem1
             // 
             this.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
             this.ExitToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
+            this.ExitToolStripMenuItem1.Size = new System.Drawing.Size(374, 44);
             this.ExitToolStripMenuItem1.Text = "E&xit";
             this.ExitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1_Click);
             // 
@@ -268,14 +270,14 @@ namespace AcornPad
             this.CopyTool,
             this.PasteTool});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(75, 38);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
             // UndoToolStripMenuItem
             // 
             this.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem";
             this.UndoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.UndoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.UndoToolStripMenuItem.Size = new System.Drawing.Size(289, 44);
             this.UndoToolStripMenuItem.Text = "&Undo";
             this.UndoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
             // 
@@ -283,14 +285,14 @@ namespace AcornPad
             // 
             this.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem";
             this.RedoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.RedoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.RedoToolStripMenuItem.Size = new System.Drawing.Size(289, 44);
             this.RedoToolStripMenuItem.Text = "&Redo";
             this.RedoToolStripMenuItem.Click += new System.EventHandler(this.RedoToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(286, 6);
             // 
             // CutTool
             // 
@@ -298,7 +300,7 @@ namespace AcornPad
             this.CutTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CutTool.Name = "CutTool";
             this.CutTool.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.CutTool.Size = new System.Drawing.Size(144, 22);
+            this.CutTool.Size = new System.Drawing.Size(289, 44);
             this.CutTool.Text = "Cu&t";
             this.CutTool.Click += new System.EventHandler(this.CutTool_Click);
             // 
@@ -308,7 +310,7 @@ namespace AcornPad
             this.CopyTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyTool.Name = "CopyTool";
             this.CopyTool.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.CopyTool.Size = new System.Drawing.Size(144, 22);
+            this.CopyTool.Size = new System.Drawing.Size(289, 44);
             this.CopyTool.Text = "&Copy";
             this.CopyTool.Click += new System.EventHandler(this.CopyTool_Click);
             // 
@@ -318,7 +320,7 @@ namespace AcornPad
             this.PasteTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PasteTool.Name = "PasteTool";
             this.PasteTool.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.PasteTool.Size = new System.Drawing.Size(144, 22);
+            this.PasteTool.Size = new System.Drawing.Size(289, 44);
             this.PasteTool.Text = "&Paste";
             this.PasteTool.Click += new System.EventHandler(this.PasteTool_Click);
             // 
@@ -332,48 +334,48 @@ namespace AcornPad
             this.TileEditorToolStripMenuItem,
             this.MapEditorToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(86, 38);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // PaletteToolStripMenuItem
             // 
             this.PaletteToolStripMenuItem.Name = "PaletteToolStripMenuItem";
-            this.PaletteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.PaletteToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.PaletteToolStripMenuItem.Text = "Palette";
             this.PaletteToolStripMenuItem.Click += new System.EventHandler(this.PaletteToolStripMenuItem_Click);
             // 
             // CharacterSetToolStripMenuItem
             // 
             this.CharacterSetToolStripMenuItem.Name = "CharacterSetToolStripMenuItem";
-            this.CharacterSetToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.CharacterSetToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.CharacterSetToolStripMenuItem.Text = "Character Set";
             this.CharacterSetToolStripMenuItem.Click += new System.EventHandler(this.CharacterSetToolStripMenuItem_Click);
             // 
             // CharacterEditorToolStripMenuItem
             // 
             this.CharacterEditorToolStripMenuItem.Name = "CharacterEditorToolStripMenuItem";
-            this.CharacterEditorToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.CharacterEditorToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.CharacterEditorToolStripMenuItem.Text = "Character Editor";
             this.CharacterEditorToolStripMenuItem.Click += new System.EventHandler(this.CharacterEditorToolStripMenuItem_Click);
             // 
             // TileSetToolStripMenuItem
             // 
             this.TileSetToolStripMenuItem.Name = "TileSetToolStripMenuItem";
-            this.TileSetToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.TileSetToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.TileSetToolStripMenuItem.Text = "Tile Set";
             this.TileSetToolStripMenuItem.Click += new System.EventHandler(this.TileSetToolStripMenuItem_Click);
             // 
             // TileEditorToolStripMenuItem
             // 
             this.TileEditorToolStripMenuItem.Name = "TileEditorToolStripMenuItem";
-            this.TileEditorToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.TileEditorToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.TileEditorToolStripMenuItem.Text = "Tile Editor";
             this.TileEditorToolStripMenuItem.Click += new System.EventHandler(this.TileEditorToolStripMenuItem_Click);
             // 
             // MapEditorToolStripMenuItem
             // 
             this.MapEditorToolStripMenuItem.Name = "MapEditorToolStripMenuItem";
-            this.MapEditorToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.MapEditorToolStripMenuItem.Size = new System.Drawing.Size(319, 44);
             this.MapEditorToolStripMenuItem.Text = "Map Editor";
             this.MapEditorToolStripMenuItem.Click += new System.EventHandler(this.MapEditorToolStripMenuItem_Click);
             // 
@@ -382,51 +384,59 @@ namespace AcornPad
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importImageToolStripMenuItem,
             this.importBinaryToolStripMenuItem,
+            this.importFileToolStripMenuItem,
             this.ExportToScreenToolStripMenuItem,
             this.toolStripMenuItem6,
             this.ClipboardHistoryToolStripMenuItem,
             this.toolStripMenuItem8,
             this.OptionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // importImageToolStripMenuItem
             // 
             this.importImageToolStripMenuItem.Name = "importImageToolStripMenuItem";
-            this.importImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importImageToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.importImageToolStripMenuItem.Text = "Import Image";
             this.importImageToolStripMenuItem.Click += new System.EventHandler(this.importImageToolStripMenuItem_Click);
+            // 
+            // importBinaryToolStripMenuItem
+            // 
+            this.importBinaryToolStripMenuItem.Name = "importBinaryToolStripMenuItem";
+            this.importBinaryToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.importBinaryToolStripMenuItem.Text = "Import Binary";
+            this.importBinaryToolStripMenuItem.Click += new System.EventHandler(this.ImportBinaryToolStripMenuItem_Click);
             // 
             // ExportToScreenToolStripMenuItem
             // 
             this.ExportToScreenToolStripMenuItem.Name = "ExportToScreenToolStripMenuItem";
-            this.ExportToScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExportToScreenToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.ExportToScreenToolStripMenuItem.Text = "Export to Screen";
             this.ExportToScreenToolStripMenuItem.Click += new System.EventHandler(this.ExportToScreenToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(356, 6);
             // 
             // ClipboardHistoryToolStripMenuItem
             // 
             this.ClipboardHistoryToolStripMenuItem.Name = "ClipboardHistoryToolStripMenuItem";
-            this.ClipboardHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ClipboardHistoryToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.ClipboardHistoryToolStripMenuItem.Text = "Clipboard History";
             this.ClipboardHistoryToolStripMenuItem.Click += new System.EventHandler(this.ClipboardHistoryToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(356, 6);
             // 
             // OptionsToolStripMenuItem
             // 
             this.OptionsToolStripMenuItem.Image = global::AcornPad.Properties.Resources.Cog;
             this.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem";
-            this.OptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OptionsToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.OptionsToolStripMenuItem.Text = "Options...";
             this.OptionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
             // 
@@ -438,34 +448,34 @@ namespace AcornPad
             this.tileVerticalToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.windowToolStripMenuItem.Size = new System.Drawing.Size(122, 38);
             this.windowToolStripMenuItem.Text = "Window";
             // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(304, 44);
             this.cascadeToolStripMenuItem.Text = "Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(304, 44);
             this.tileHorizontalToolStripMenuItem.Text = "Tile Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(304, 44);
             this.tileVerticalToolStripMenuItem.Text = "Tile Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(304, 44);
             this.arrangeIconsToolStripMenuItem.Text = "Arrange Icons";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
@@ -476,25 +486,25 @@ namespace AcornPad
             this.toolStripMenuItem9,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(85, 38);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
             // ReleaseNotesMenu
             // 
             this.ReleaseNotesMenu.Name = "ReleaseNotesMenu";
-            this.ReleaseNotesMenu.Size = new System.Drawing.Size(147, 22);
+            this.ReleaseNotesMenu.Size = new System.Drawing.Size(299, 44);
             this.ReleaseNotesMenu.Text = "Release Notes";
             this.ReleaseNotesMenu.Click += new System.EventHandler(this.ReleaseNotesMenu_Click);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(144, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(296, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(299, 44);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -508,9 +518,9 @@ namespace AcornPad
             this.ButtonCut,
             this.ButtonCopy,
             this.ButtonPaste});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 42);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(807, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(807, 42);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -521,7 +531,7 @@ namespace AcornPad
             this.toolStripMenuItem2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(28, 25);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(52, 42);
             this.toolStripMenuItem2.ToolTipText = "New Project";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
@@ -532,7 +542,7 @@ namespace AcornPad
             this.toolStripMenuItem3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(28, 25);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(52, 42);
             this.toolStripMenuItem3.ToolTipText = "Open Project";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
@@ -543,14 +553,14 @@ namespace AcornPad
             this.toolStripMenuItem4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(28, 25);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(52, 42);
             this.toolStripMenuItem4.ToolTipText = "Save Project";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 42);
             // 
             // ButtonCut
             // 
@@ -558,7 +568,7 @@ namespace AcornPad
             this.ButtonCut.Image = ((System.Drawing.Image)(resources.GetObject("ButtonCut.Image")));
             this.ButtonCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonCut.Name = "ButtonCut";
-            this.ButtonCut.Size = new System.Drawing.Size(23, 22);
+            this.ButtonCut.Size = new System.Drawing.Size(46, 36);
             this.ButtonCut.Text = "Cut";
             this.ButtonCut.Click += new System.EventHandler(this.CutTool_Click);
             // 
@@ -568,7 +578,7 @@ namespace AcornPad
             this.ButtonCopy.Image = ((System.Drawing.Image)(resources.GetObject("ButtonCopy.Image")));
             this.ButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonCopy.Name = "ButtonCopy";
-            this.ButtonCopy.Size = new System.Drawing.Size(23, 22);
+            this.ButtonCopy.Size = new System.Drawing.Size(46, 36);
             this.ButtonCopy.Text = "Copy";
             this.ButtonCopy.Click += new System.EventHandler(this.CopyTool_Click);
             // 
@@ -578,16 +588,16 @@ namespace AcornPad
             this.ButtonPaste.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPaste.Image")));
             this.ButtonPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonPaste.Name = "ButtonPaste";
-            this.ButtonPaste.Size = new System.Drawing.Size(23, 22);
+            this.ButtonPaste.Size = new System.Drawing.Size(46, 36);
             this.ButtonPaste.Text = "Paste";
             this.ButtonPaste.Click += new System.EventHandler(this.PasteTool_Click);
             // 
-            // importBinaryToolStripMenuItem
+            // importFileToolStripMenuItem
             // 
-            this.importBinaryToolStripMenuItem.Name = "importBinaryToolStripMenuItem";
-            this.importBinaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importBinaryToolStripMenuItem.Text = "Import Binary";
-            this.importBinaryToolStripMenuItem.Click += new System.EventHandler(this.ImportBinaryToolStripMenuItem_Click);
+            this.importFileToolStripMenuItem.Name = "importFileToolStripMenuItem";
+            this.importFileToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.importFileToolStripMenuItem.Text = "Import File";
+            this.importFileToolStripMenuItem.Click += new System.EventHandler(this.ImportFileToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -673,6 +683,7 @@ namespace AcornPad
         private System.Windows.Forms.ToolStripMenuItem ReleaseNotesMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem importBinaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importFileToolStripMenuItem;
     }
 }
 

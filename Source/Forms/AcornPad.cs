@@ -1194,7 +1194,7 @@ namespace AcornPad
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1223,6 +1223,47 @@ namespace AcornPad
             CloseProject();
 
             ImportBin frm = new ImportBin();
+
+            result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (frm.Project != null)
+                {
+                    Project = frm.Project;
+                    //Project.AddHistory("Import Image");
+                    ShowProject();
+                }
+            }
+
+            frm.Dispose();
+        }
+
+        private void ImportFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+
+            if (IsProjectDirty)
+            {
+                result = MessageBox.Show("You have unsaved work.\r\n\r\nDo you wish to save before creating a new project?",
+                                                      "Warning",
+                                                      MessageBoxButtons.YesNoCancel,
+                                                      MessageBoxIcon.Exclamation);
+
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+                else if (result == DialogResult.Yes)
+                {
+                    if (SaveProject(Filename) == false)
+                        return;
+                }
+            }
+
+            CloseProject();
+
+            ImportFile frm = new ImportFile();
 
             result = frm.ShowDialog();
 

@@ -80,3 +80,5 @@ Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.Assemb
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Controls.AcornPalette.resources
 Z:\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ReplaceColour.resources
 \\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ImportBin.resources
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.csproj.AssemblyReference.cache
+\\Mac\Home\Documents\Visual Studio 2019\AcornPad\Source\obj\Debug\AcornPad.Forms.ImportFile.resources
