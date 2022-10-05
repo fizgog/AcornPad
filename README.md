@@ -4,6 +4,10 @@ Windows character, tile and map editor for the Acorn Atom and BBC Micro, based f
 
 <img src="Images/AcornPad.png" alt="AcornPad"/>
 
+<h2>Version 1.08 Release</h2>
+<h3>New</h3>
+<p>Added Import from File (searches for .byte and EQUB values)</p>
+
 <h2>Version 1.07 Release</h2>
 <h3>New</h3>
 <p>Added map compression 4 4 (bits 11110000 for length, 00001111 for image)</p>
