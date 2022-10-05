@@ -25,7 +25,8 @@ namespace AcornPad.Common
 
             if (words.Length >= 1) category = words[0];
             if (words.Length >= 2) name = words[1];
-            if (words.Length >= 3) index = words[2].ToInteger();
+            if (words.Length >= 3) name += " " + words[2];
+            if (words.Length >= 4) index = words[3].ToInteger();
 
             Value = Properties.Settings.Default[fullName];
         }

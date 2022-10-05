@@ -95,6 +95,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColourComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ColourPicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -372,6 +375,8 @@
     <None Include="Resources\AcornBackdrop2.png" />
     <None Include="Resources\AcornBackdrop3.png" />
     <None Include="Resources\AcornBackdrop.png" />
+    <None Include="Resources\arrows_from_dot.png" />
+    <None Include="Resources\arrows_to_dot.png" />
     <Content Include="Resources\brush.png" />
     <None Include="Resources\clone.png" />
     <None Include="Resources\crop.png" />

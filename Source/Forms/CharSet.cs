@@ -10,8 +10,8 @@ namespace AcornPad.Forms
         private const int ZOOM_MIN_FACTOR = 2;
         private const int ZOOM_MAX_FACTOR = 10;
 
-        private readonly Color purple = Color.FromArgb(113, 96, 232);
-        private readonly Color green = Color.FromArgb(108, 203, 95);
+        //private readonly Color purple = Color.FromArgb(113, 96, 232);
+        //private readonly Color green = Color.FromArgb(108, 203, 95);
 
         private readonly AcornProject Project;
 
@@ -258,8 +258,11 @@ namespace AcornPad.Forms
         /// <param name="e"></param>
         private void ImageBox1_Paint(object sender, PaintEventArgs e)
         {
-            ImageBox1.PaintSelector(Project.Chars.SelectedItem, green, e.Graphics);
-            ImageBox1.PaintSelector(Project.Chars.SelectedItemTile, purple, e.Graphics);
+            Color col1 = (Color)Properties.Settings.Default["Character_Left_Selector_5"];
+            Color col2 = (Color)Properties.Settings.Default["Character_Right_Selector_6"];
+
+            ImageBox1.PaintSelector(Project.Chars.SelectedItem, col1, e.Graphics);
+            ImageBox1.PaintSelector(Project.Chars.SelectedItemTile, col2, e.Graphics);
         }
 
         /// <summary>

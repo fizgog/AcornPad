@@ -15,6 +15,9 @@ namespace AcornPad.Forms
 
         public event EventHandler MapEdit_ImageChanged;
 
+        private int crossX;
+        private int crossY;
+
         public MapEdit(AcornProject project)
         {
             InitializeComponent();
@@ -56,7 +59,9 @@ namespace AcornPad.Forms
                 ButtonPen,
                 ButtonBrush,
                 ButtonFloodFill,
-                ButtonPicker
+                ButtonPicker,
+                ButtonIncrease,
+                ButtonDecrease
             };
 
             foreach (ToolStripButton itm in PaintTools)
@@ -88,6 +93,7 @@ namespace AcornPad.Forms
         {
             SelectToolStripButton(sender as ToolStripButton, PaintTools);
             ImageBox1.PaintTool = GetPaintTool();
+            Refresh();
         }
 
         /// <summary>
@@ -165,6 +171,8 @@ namespace AcornPad.Forms
 
                 if (Project.TilesOnline)
                 {
+                    ButtonPicker.ToolTipText = "Tile Picker";
+
                     width = Project.Tiles.Width * Project.Chars.Width;
                     height = Project.Tiles.Height * Project.Chars.Height;
                     ImageBox1.CellSize = new System.Drawing.Size(width, height);
@@ -271,41 +279,75 @@ namespace AcornPad.Forms
 
                     int newValue = GetItem(e.Button);
 
-                    if (newValue != oldValue)
+                    switch (ImageBox1.PaintTool)
                     {
-                        switch (ImageBox1.PaintTool)
-                        {
-                            case 0: // Pencil
+                        case 0: // Pencil
+                            if (newValue != oldValue)
+                            {
                                 Project.AddHistory("Paint Map with Pencil");
                                 Project.Maps.Items[0].Pencil(xPos, yPos, newValue);
-                                break;
+                            }
+                            break;
 
-                            case 1: // Brush
+                        case 1: // Brush
+                            if (newValue != oldValue)
+                            {
                                 Project.AddHistory("Paint Map with Brush");
                                 Project.Maps.Items[0].Brush(xPos, yPos, newValue);
-                                break;
+                            }
+                            break;
 
-                            case 2: // Flood fill
+                        case 2: // Flood fill
+                            if (newValue != oldValue)
+                            {
                                 Project.AddHistory("Paint Map with Flood Fill");
                                 Project.Maps.Items[0].FloodFill(xPos, yPos, newValue);
-                                break;
+                            }
+                            break;
 
-                            case 3: // Picker
-                                if (Project.TilesOnline)
-                                {
-                                    Project.Tiles.SelectedItem = oldValue;
-                                }
-                                else
-                                {
-                                    Project.Chars.SelectedItem = oldValue;
-                                }
-                                break;
+                        case 3: // Picker
+                            if (Project.TilesOnline)
+                            {
+                                Project.Tiles.SelectedItem = oldValue;
+                            }
+                            else
+                            {
+                                Project.Chars.SelectedItem = oldValue;
+                            }
+                            break;
 
-                            default: throw new Exception("Invalid paint tool.");
-                        }
+                        case 4: // Increase
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                Project.AddHistory("Insert Row");
+                                Project.Maps.Items[0].InsertRow(yPos);
+                            }
+                            else
+                            {
+                                Project.AddHistory("Insert Column");
+                                Project.Maps.Items[0].InsertColumn(xPos);
+                            }
+                            break;
 
-                        Invalidate();
+                        case 5: // Decrease
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                Project.AddHistory("Delete Row");
+                                Project.Maps.Items[0].DeleteRow(yPos);
+                            }
+                            else
+                            {
+                                Project.AddHistory("Delete Column");
+                                Project.Maps.Items[0].DeleteColumn(xPos);
+                            }
+                            break;
+
+                        default:
+                            throw new Exception("Invalid paint tool.");
                     }
+
+                    Invalidate();
+               
                 }
             }
         }
@@ -347,17 +389,24 @@ namespace AcornPad.Forms
                                 break;
 
                             case 2: // Flood fill
-                                // Do nothing
-                                break;
-
                             case 3: // Picker
-                                // Do nothing
+                            case 4: // Increase row or column
+                            case 5: // Decrease row or column
                                 break;
 
                             default: throw new Exception("Invalid paint tool.");
                         }
 
                         Invalidate();
+                    }
+                }
+                else
+                {
+                    if (ImageBox1.PaintTool == 4 || ImageBox1.PaintTool == 5)
+                    {
+                        crossX = xPos;
+                        crossY = yPos;
+                        Refresh();
                     }
                 }
             }
@@ -544,7 +593,7 @@ namespace AcornPad.Forms
         }
 
         /// <summary>
-        /// Transform: Shift Down 
+        /// Transform: Shift Down
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -553,6 +602,19 @@ namespace AcornPad.Forms
             Project.AddHistory("Shift Map Down");
             Project.Maps.Shift(Common.ShiftType.ShiftDown);
             MapEdit_ImageChanged?.Invoke(this, e);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImageBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (ImageBox1.PaintTool == 4 || ImageBox1.PaintTool == 5)
+            {
+                ImageBox1.PaintCrossSelector(crossX, crossY, e.Graphics);
+            }
         }
     }
 }

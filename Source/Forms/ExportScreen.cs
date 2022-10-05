@@ -25,56 +25,56 @@ namespace AcornPad.Forms
         {
             // Chars
             ComboBoxExportFormat.DataSource = Enum.GetValues(typeof(ExportFormatType));
-            ComboBoxExportFormat.SelectedItem = Properties.Settings.Default["Options_Format_1"];
+            ComboBoxExportFormat.SelectedItem = Properties.Settings.Default["Options_Format__1"];
 
             ComboBoxConversion1.DataSource = Enum.GetValues(typeof(ConversionType));
-            ComboBoxConversion1.SelectedItem = Properties.Settings.Default["Options_Conversion_2"];
+            ComboBoxConversion1.SelectedItem = Properties.Settings.Default["Options_Conversion__2"];
 
-            CheckBoxCommentsChar.Checked = (bool)Properties.Settings.Default["Options_Comments_3"];
+            CheckBoxCommentsChar.Checked = (bool)Properties.Settings.Default["Options_Comments__3"];
 
-            TextBoxCharName.Text = (string)Properties.Settings.Default["Character_Name_1"];
+            TextBoxCharName.Text = (string)Properties.Settings.Default["Character_Name__1"];
 
             ComboBoxLayoutChar.DataSource = Enum.GetValues(typeof(LayoutType));
-            ComboBoxConversion1.SelectedItem = Properties.Settings.Default["Character_Layout_2"];
+            ComboBoxConversion1.SelectedItem = Properties.Settings.Default["Character_Layout__2"];
 
-            CheckBoxPrefixCharacterName.Checked = (bool)Properties.Settings.Default["Character_Prefix_3"];
+            CheckBoxPrefixCharacterName.Checked = (bool)Properties.Settings.Default["Character_Prefix__3"];
 
             ComboBoxCharacterColumns.DataSource = Enum.GetValues(typeof(ColumnType));
-            ComboBoxCharacterColumns.SelectedItem = Properties.Settings.Default["Character_Columns_4"];
+            ComboBoxCharacterColumns.SelectedItem = Properties.Settings.Default["Character_Columns__4"];
 
             // Tiles
             ComboBoxExportFormatTile.DataSource = Enum.GetValues(typeof(ExportFormatType));
-            ComboBoxExportFormatTile.SelectedItem = Properties.Settings.Default["Options_Format_1"];
+            ComboBoxExportFormatTile.SelectedItem = Properties.Settings.Default["Options_Format__1"];
 
             ComboBoxConversionTile.DataSource = Enum.GetValues(typeof(ConversionType));
-            ComboBoxConversionTile.SelectedItem = Properties.Settings.Default["Options_Conversion_2"];
+            ComboBoxConversionTile.SelectedItem = Properties.Settings.Default["Options_Conversion__2"];
 
-            CheckBoxCommentsTile.Checked = (bool)Properties.Settings.Default["Options_Comments_3"];
+            CheckBoxCommentsTile.Checked = (bool)Properties.Settings.Default["Options_Comments__3"];
 
             // TODO
             ComboBoxExportFormatTile.DataSource = Enum.GetValues(typeof(ExportFormatType));
-            ComboBoxExportFormatTile.SelectedItem = Properties.Settings.Default["Options_Format_1"];
+            ComboBoxExportFormatTile.SelectedItem = Properties.Settings.Default["Options_Format__1"];
 
             ComboBoxConversionTile.DataSource = Enum.GetValues(typeof(ConversionType));
-            ComboBoxConversionTile.SelectedItem = Properties.Settings.Default["Options_Conversion_2"];
+            ComboBoxConversionTile.SelectedItem = Properties.Settings.Default["Options_Conversion__2"];
 
-            CheckBoxCommentsTile.Checked = (bool)Properties.Settings.Default["Options_Comments_3"];
+            CheckBoxCommentsTile.Checked = (bool)Properties.Settings.Default["Options_Comments__3"];
 
-            NumericUpDownColumnTile.Value = (decimal)Properties.Settings.Default["Tile_Columns_1"];
+            NumericUpDownColumnTile.Value = (decimal)Properties.Settings.Default["Tile_Columns__1"];
 
             // Maps
             ComboBoxExportFormatMap.DataSource = Enum.GetValues(typeof(ExportFormatType));
-            ComboBoxExportFormatMap.SelectedItem = Properties.Settings.Default["Options_Format_1"];
+            ComboBoxExportFormatMap.SelectedItem = Properties.Settings.Default["Options_Format__1"];
 
             ComboBoxConversionMap.DataSource = Enum.GetValues(typeof(ConversionType));
-            ComboBoxConversionMap.SelectedItem = Properties.Settings.Default["Options_Conversion_2"];
+            ComboBoxConversionMap.SelectedItem = Properties.Settings.Default["Options_Conversion__2"];
 
-            CheckBoxCommentsMap.Checked = (bool)Properties.Settings.Default["Options_Comments_3"];
+            CheckBoxCommentsMap.Checked = (bool)Properties.Settings.Default["Options_Comments__3"];
 
             ComboBoxCompressionMap.DataSource = Enum.GetValues(typeof(CompressionType));
-            ComboBoxCompressionMap.SelectedItem = Properties.Settings.Default["Map_Compression_1"];
+            ComboBoxCompressionMap.SelectedItem = Properties.Settings.Default["Map_Compression__1"];
 
-            NumericUpDownColumnMap.Value = (decimal)Properties.Settings.Default["Map_Columns_2"];
+            NumericUpDownColumnMap.Value = (decimal)Properties.Settings.Default["Map_Columns__2"];
         }
 
         /// <summary>

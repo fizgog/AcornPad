@@ -1,6 +1,8 @@
 ﻿using AcornPad.Common;
+using AcornPad.Controls;
 using System;
 using System.Configuration;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AcornPad.Forms
@@ -163,7 +165,8 @@ namespace AcornPad.Forms
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft
                 };
 
-                lbl.Text = sets[i].Name;
+                lbl.Text = sets[i].Name;//.Replace("_"," ");
+
                 TableLayoutPanel1.Controls.Add(lbl);
                 TableLayoutPanel1.RowStyles.Add(rowStyle);
 
@@ -226,6 +229,20 @@ namespace AcornPad.Forms
                     TableLayoutPanel1.Controls.Add(cb);
                     cb.LostFocus += ComboBox_LostFocus;
                 }
+                else if(sets[i].Value is System.Drawing.Color)
+                {
+                    ColourComboBox ccb = new ColourComboBox
+                    {
+                        Name = sets[i].FullName,
+                        SelectedItem = (Color)sets[i].Value,
+                        Dock = DockStyle.Fill
+                    };
+
+                    TableLayoutPanel1.Controls.Add(ccb);
+                    ccb.LostFocus += ColourComboBox_LostFocus;
+                    ccb.SelectedIndexChanged += ColourComboBox_LostFocus;
+                }
+                
             }
 
             TableLayoutPanel1.ResumeLayout();
@@ -255,6 +272,18 @@ namespace AcornPad.Forms
             var value = Enum.Parse(enumType, cb.Text);
 
             settings.SetValueByFullName(cb.Name, value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ColourComboBox_LostFocus(object sender, EventArgs e)
+        {
+            ColourComboBox ccb = (ColourComboBox)sender;
+
+            settings.SetValueByFullName(ccb.Name, (Color)ccb.SelectedItem);
         }
 
         /// <summary>

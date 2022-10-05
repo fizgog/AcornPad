@@ -26,132 +26,192 @@ namespace AcornPad.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("BeebASM")]
-        public global::AcornPad.Common.ExportFormatType Options_Format_1 {
+        public global::AcornPad.Common.ExportFormatType Options_Format__1 {
             get {
-                return ((global::AcornPad.Common.ExportFormatType)(this["Options_Format_1"]));
+                return ((global::AcornPad.Common.ExportFormatType)(this["Options_Format__1"]));
             }
             set {
-                this["Options_Format_1"] = value;
+                this["Options_Format__1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Decimal")]
-        public global::AcornPad.Common.ConversionType Options_Conversion_2 {
+        public global::AcornPad.Common.ConversionType Options_Conversion__2 {
             get {
-                return ((global::AcornPad.Common.ConversionType)(this["Options_Conversion_2"]));
+                return ((global::AcornPad.Common.ConversionType)(this["Options_Conversion__2"]));
             }
             set {
-                this["Options_Conversion_2"] = value;
+                this["Options_Conversion__2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Options_Comments_3 {
+        public bool Options_Comments__3 {
             get {
-                return ((bool)(this["Options_Comments_3"]));
+                return ((bool)(this["Options_Comments__3"]));
             }
             set {
-                this["Options_Comments_3"] = value;
+                this["Options_Comments__3"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("char_sprite")]
-        public string Character_Name_1 {
+        public string Character_Name__1 {
             get {
-                return ((string)(this["Character_Name_1"]));
+                return ((string)(this["Character_Name__1"]));
             }
             set {
-                this["Character_Name_1"] = value;
+                this["Character_Name__1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Row")]
-        public global::AcornPad.Common.LayoutType Character_Layout_2 {
+        public global::AcornPad.Common.LayoutType Character_Layout__2 {
             get {
-                return ((global::AcornPad.Common.LayoutType)(this["Character_Layout_2"]));
+                return ((global::AcornPad.Common.LayoutType)(this["Character_Layout__2"]));
             }
             set {
-                this["Character_Layout_2"] = value;
+                this["Character_Layout__2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Character_Prefix_3 {
+        public bool Character_Prefix__3 {
             get {
-                return ((bool)(this["Character_Prefix_3"]));
+                return ((bool)(this["Character_Prefix__3"]));
             }
             set {
-                this["Character_Prefix_3"] = value;
+                this["Character_Prefix__3"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Four")]
-        public global::AcornPad.Common.ColumnType Character_Columns_4 {
+        public global::AcornPad.Common.ColumnType Character_Columns__4 {
             get {
-                return ((global::AcornPad.Common.ColumnType)(this["Character_Columns_4"]));
+                return ((global::AcornPad.Common.ColumnType)(this["Character_Columns__4"]));
             }
             set {
-                this["Character_Columns_4"] = value;
+                this["Character_Columns__4"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public global::AcornPad.Common.CompressionType Map_Compression_1 {
+        public global::AcornPad.Common.CompressionType Map_Compression__1 {
             get {
-                return ((global::AcornPad.Common.CompressionType)(this["Map_Compression_1"]));
+                return ((global::AcornPad.Common.CompressionType)(this["Map_Compression__1"]));
             }
             set {
-                this["Map_Compression_1"] = value;
+                this["Map_Compression__1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("8")]
-        public decimal Map_Columns_2 {
+        public decimal Map_Columns__2 {
             get {
-                return ((decimal)(this["Map_Columns_2"]));
+                return ((decimal)(this["Map_Columns__2"]));
             }
             set {
-                this["Map_Columns_2"] = value;
+                this["Map_Columns__2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AcornPad_Backdrop_1 {
+        public bool AcornPad_Backdrop__1 {
             get {
-                return ((bool)(this["AcornPad_Backdrop_1"]));
+                return ((bool)(this["AcornPad_Backdrop__1"]));
             }
             set {
-                this["AcornPad_Backdrop_1"] = value;
+                this["AcornPad_Backdrop__1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("8")]
-        public decimal Tile_Columns_1 {
+        public decimal Tile_Columns__1 {
             get {
-                return ((decimal)(this["Tile_Columns_1"]));
+                return ((decimal)(this["Tile_Columns__1"]));
             }
             set {
-                this["Tile_Columns_1"] = value;
+                this["Tile_Columns__1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color Character_Left_Selector_5 {
+            get {
+                return ((global::System.Drawing.Color)(this["Character_Left_Selector_5"]));
+            }
+            set {
+                this["Character_Left_Selector_5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Violet")]
+        public global::System.Drawing.Color Character_Right_Selector_6 {
+            get {
+                return ((global::System.Drawing.Color)(this["Character_Right_Selector_6"]));
+            }
+            set {
+                this["Character_Right_Selector_6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color Tile_Left_Selector_2 {
+            get {
+                return ((global::System.Drawing.Color)(this["Tile_Left_Selector_2"]));
+            }
+            set {
+                this["Tile_Left_Selector_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Violet")]
+        public global::System.Drawing.Color Tile_Right_Selector_3 {
+            get {
+                return ((global::System.Drawing.Color)(this["Tile_Right_Selector_3"]));
+            }
+            set {
+                this["Tile_Right_Selector_3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SkyBlue")]
+        public global::System.Drawing.Color Map_Cross_Selector_3 {
+            get {
+                return ((global::System.Drawing.Color)(this["Map_Cross_Selector_3"]));
+            }
+            set {
+                this["Map_Cross_Selector_3"] = value;
             }
         }
     }

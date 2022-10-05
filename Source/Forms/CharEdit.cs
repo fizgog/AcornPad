@@ -46,7 +46,8 @@ namespace AcornPad.Forms
             {
                 ButtonPen,
                 ButtonBrush,
-                ButtonFloodFill
+                ButtonFloodFill,
+                ButtonPicker
             };
 
             foreach (ToolStripButton itm in PaintTools)
@@ -236,6 +237,15 @@ namespace AcornPad.Forms
                             Project.Chars.Items[index].FloodFill(xPos, yPos, pixelColour);
                             break;
 
+                        case 3: // Colour Picker
+                            int picker = Project.Chars.Items[index].GetCellValue(xPos, yPos);
+                            
+                            if (e.Button == MouseButtons.Left)
+                                Project.Palette.DrawColour = picker;
+                            else if(e.Button == MouseButtons.Right)
+                                Project.Palette.EraseColour = picker;
+                            break;
+
                         default: throw new Exception("Invalid paint tool.");
                     }
 
@@ -274,6 +284,9 @@ namespace AcornPad.Forms
                             break;
 
                         case 2: // FloodFill not required on move
+                            break;
+
+                        case 3: // Colour Picker not required on move
                             break;
 
                         default: throw new Exception("Invalid paint tool.");

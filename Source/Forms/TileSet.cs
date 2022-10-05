@@ -10,8 +10,8 @@ namespace AcornPad.Forms
         private const int ZOOM_MIN_FACTOR = 2;
         private const int ZOOM_MAX_FACTOR = 10;
 
-        private readonly Color purple = Color.FromArgb(113, 96, 232);
-        private readonly Color green = Color.FromArgb(108, 203, 95);
+        //private readonly Color purple = Color.FromArgb(113, 96, 232);
+        //private readonly Color green = Color.FromArgb(108, 203, 95);
 
         private readonly AcornProject Project;
 
@@ -96,8 +96,7 @@ namespace AcornPad.Forms
             {
                 toolStripNumericTextBox1.Text = Project.Tiles.Count.ToString();
 
-                int width = (ClientRectangle.Width / (Project.Tiles.Width * ImageBox1.PixelSize * Project.Chars.Width) / ImageBox1.ZoomFactor) - 1;
-
+                int width = (ClientRectangle.Width / (Project.Tiles.Width * ImageBox1.PixelSize * Project.Chars.Width * ImageBox1.ZoomFactor));
                 width = width > 0 ? width : 1;
 
                 int height = (Project.Tiles.Count / width) + 1;
@@ -105,9 +104,9 @@ namespace AcornPad.Forms
                 height = height > 0 ? height : 1;
 
                 ImageBox1.PixelSize = Project.Machine.PixelSize;
-                ImageBox1.GridSize = new System.Drawing.Size(width * ImageBox1.PixelSize, height);
                 ImageBox1.ImageSize = new Size(width, height);
 
+                //ImageBox1.GridSize = new Size(32, 16);
                 ImageBox1.DrawBitmapTileSet(Project);
             }
 
@@ -260,8 +259,11 @@ namespace AcornPad.Forms
         /// <param name="e"></param>
         private void ImageBox1_Paint(object sender, PaintEventArgs e)
         {
-            ImageBox1.PaintSelector(Project.Tiles.SelectedItem, green, e.Graphics);
-            ImageBox1.PaintSelector(Project.Tiles.SelectedItemTile, purple, e.Graphics);
+            Color col1 = (Color)Properties.Settings.Default["Tile_Left_Selector_2"];
+            Color col2 = (Color)Properties.Settings.Default["Tile_Right_Selector_3"];
+
+            ImageBox1.PaintSelector(Project.Tiles.SelectedItem, col1, e.Graphics);
+            ImageBox1.PaintSelector(Project.Tiles.SelectedItemTile, col2, e.Graphics);
         }
 
         /// <summary>

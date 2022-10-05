@@ -38,7 +38,10 @@ namespace AcornPad.Forms
             this.ButtonPen = new System.Windows.Forms.ToolStripButton();
             this.ButtonBrush = new System.Windows.Forms.ToolStripButton();
             this.ButtonFloodFill = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ButtonPicker = new System.Windows.Forms.ToolStripButton();
+            this.ButtonIncrease = new System.Windows.Forms.ToolStripButton();
+            this.ButtonDecrease = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripNumericTextBox3 = new WindowsFormsApp1.Controls.ToolStripNumericTextBox();
@@ -80,7 +83,10 @@ namespace AcornPad.Forms
             this.ButtonPen,
             this.ButtonBrush,
             this.ButtonFloodFill,
+            this.toolStripSeparator4,
             this.ButtonPicker,
+            this.ButtonIncrease,
+            this.ButtonDecrease,
             this.toolStripSeparator2,
             this.toolStripLabel3,
             this.toolStripNumericTextBox3,
@@ -92,7 +98,7 @@ namespace AcornPad.Forms
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(584, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1367, 42);
             this.toolStrip1.TabIndex = 5;
             // 
             // ButtonGrid
@@ -104,7 +110,7 @@ namespace AcornPad.Forms
             this.ButtonGrid.Image = global::AcornPad.Properties.Resources.grid;
             this.ButtonGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonGrid.Name = "ButtonGrid";
-            this.ButtonGrid.Size = new System.Drawing.Size(23, 22);
+            this.ButtonGrid.Size = new System.Drawing.Size(46, 36);
             this.ButtonGrid.Text = "Grid";
             this.ButtonGrid.ToolTipText = "Grid";
             this.ButtonGrid.Click += new System.EventHandler(this.ButtonGrid_Click);
@@ -115,7 +121,7 @@ namespace AcornPad.Forms
             this.ButtonZoomOut.Image = global::AcornPad.Properties.Resources.zoomout;
             this.ButtonZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonZoomOut.Name = "ButtonZoomOut";
-            this.ButtonZoomOut.Size = new System.Drawing.Size(23, 22);
+            this.ButtonZoomOut.Size = new System.Drawing.Size(46, 36);
             this.ButtonZoomOut.Text = "Zoom Out";
             this.ButtonZoomOut.Click += new System.EventHandler(this.ButtonZoomOut_Click);
             // 
@@ -125,14 +131,14 @@ namespace AcornPad.Forms
             this.ButtonZoomIn.Image = global::AcornPad.Properties.Resources.zoomin;
             this.ButtonZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonZoomIn.Name = "ButtonZoomIn";
-            this.ButtonZoomIn.Size = new System.Drawing.Size(23, 22);
+            this.ButtonZoomIn.Size = new System.Drawing.Size(46, 36);
             this.ButtonZoomIn.Text = "Zoom In";
             this.ButtonZoomIn.Click += new System.EventHandler(this.ButtonZoomIn_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 42);
             // 
             // ButtonPen
             // 
@@ -143,7 +149,7 @@ namespace AcornPad.Forms
             this.ButtonPen.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPen.Image")));
             this.ButtonPen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonPen.Name = "ButtonPen";
-            this.ButtonPen.Size = new System.Drawing.Size(23, 22);
+            this.ButtonPen.Size = new System.Drawing.Size(46, 36);
             this.ButtonPen.Text = "Pen";
             // 
             // ButtonBrush
@@ -153,7 +159,7 @@ namespace AcornPad.Forms
             this.ButtonBrush.Image = ((System.Drawing.Image)(resources.GetObject("ButtonBrush.Image")));
             this.ButtonBrush.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonBrush.Name = "ButtonBrush";
-            this.ButtonBrush.Size = new System.Drawing.Size(23, 22);
+            this.ButtonBrush.Size = new System.Drawing.Size(46, 36);
             this.ButtonBrush.Text = "Brush";
             // 
             // ButtonFloodFill
@@ -163,8 +169,13 @@ namespace AcornPad.Forms
             this.ButtonFloodFill.Image = ((System.Drawing.Image)(resources.GetObject("ButtonFloodFill.Image")));
             this.ButtonFloodFill.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonFloodFill.Name = "ButtonFloodFill";
-            this.ButtonFloodFill.Size = new System.Drawing.Size(23, 22);
+            this.ButtonFloodFill.Size = new System.Drawing.Size(46, 36);
             this.ButtonFloodFill.Text = "Flood Fill";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 42);
             // 
             // ButtonPicker
             // 
@@ -172,89 +183,109 @@ namespace AcornPad.Forms
             this.ButtonPicker.Image = global::AcornPad.Properties.Resources.ColourPicker;
             this.ButtonPicker.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonPicker.Name = "ButtonPicker";
-            this.ButtonPicker.Size = new System.Drawing.Size(23, 22);
-            this.ButtonPicker.Text = "Picker";
+            this.ButtonPicker.Size = new System.Drawing.Size(46, 36);
+            this.ButtonPicker.Text = "Character Picker";
+            // 
+            // ButtonIncrease
+            // 
+            this.ButtonIncrease.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonIncrease.Image = global::AcornPad.Properties.Resources.arrows_from_dot;
+            this.ButtonIncrease.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonIncrease.Name = "ButtonIncrease";
+            this.ButtonIncrease.Size = new System.Drawing.Size(46, 36);
+            this.ButtonIncrease.Text = "Increase";
+            // 
+            // ButtonDecrease
+            // 
+            this.ButtonDecrease.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonDecrease.Image = global::AcornPad.Properties.Resources.arrows_to_dot;
+            this.ButtonDecrease.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonDecrease.Name = "ButtonDecrease";
+            this.ButtonDecrease.Size = new System.Drawing.Size(46, 36);
+            this.ButtonDecrease.Text = "Decrease";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 42);
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(31, 22);
+            this.toolStripLabel3.Size = new System.Drawing.Size(63, 36);
             this.toolStripLabel3.Text = "Map";
             // 
             // toolStripNumericTextBox3
             // 
+            this.toolStripNumericTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripNumericTextBox3.MaxValue = 999999;
             this.toolStripNumericTextBox3.MinValue = 1;
             this.toolStripNumericTextBox3.Name = "toolStripNumericTextBox3";
-            this.toolStripNumericTextBox3.Size = new System.Drawing.Size(50, 25);
+            this.toolStripNumericTextBox3.Size = new System.Drawing.Size(50, 42);
             this.toolStripNumericTextBox3.Text = "1";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 42);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(39, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(79, 36);
             this.toolStripLabel1.Text = "Width";
             // 
             // toolStripNumericTextBox1
             // 
+            this.toolStripNumericTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripNumericTextBox1.MaxValue = 99999;
             this.toolStripNumericTextBox1.MinValue = 1;
             this.toolStripNumericTextBox1.Name = "toolStripNumericTextBox1";
-            this.toolStripNumericTextBox1.Size = new System.Drawing.Size(50, 25);
+            this.toolStripNumericTextBox1.Size = new System.Drawing.Size(50, 42);
             this.toolStripNumericTextBox1.Text = "1";
             this.toolStripNumericTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox1_KeyUp);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(43, 22);
+            this.toolStripLabel2.Size = new System.Drawing.Size(87, 36);
             this.toolStripLabel2.Text = "Height";
             // 
             // toolStripNumericTextBox2
             // 
+            this.toolStripNumericTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripNumericTextBox2.MaxValue = 99999;
             this.toolStripNumericTextBox2.MinValue = 1;
             this.toolStripNumericTextBox2.Name = "toolStripNumericTextBox2";
-            this.toolStripNumericTextBox2.Size = new System.Drawing.Size(50, 25);
+            this.toolStripNumericTextBox2.Size = new System.Drawing.Size(50, 42);
             this.toolStripNumericTextBox2.Text = "1";
             this.toolStripNumericTextBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToolStripNumericTextBox2_KeyUp);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel1,
             this.StatusLabel2,
             this.toolStripStatusLabel2,
             this.StatusLabel3,
             this.StatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 592);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1367, 42);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // StatusLabel1
             // 
             this.StatusLabel1.Name = "StatusLabel1";
-            this.StatusLabel1.Size = new System.Drawing.Size(39, 17);
+            this.StatusLabel1.Size = new System.Drawing.Size(79, 32);
             this.StatusLabel1.Text = "Ready";
             this.StatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // StatusLabel2
             // 
             this.StatusLabel2.Name = "StatusLabel2";
-            this.StatusLabel2.Size = new System.Drawing.Size(459, 17);
+            this.StatusLabel2.Size = new System.Drawing.Size(1130, 32);
             this.StatusLabel2.Spring = true;
             this.StatusLabel2.Text = "Char";
             this.StatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,23 +293,24 @@ namespace AcornPad.Forms
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 32);
             // 
             // StatusLabel3
             // 
             this.StatusLabel3.Name = "StatusLabel3";
-            this.StatusLabel3.Size = new System.Drawing.Size(32, 17);
+            this.StatusLabel3.Size = new System.Drawing.Size(65, 32);
             this.StatusLabel3.Text = "Cells";
             // 
             // StatusLabel4
             // 
             this.StatusLabel4.Name = "StatusLabel4";
-            this.StatusLabel4.Size = new System.Drawing.Size(39, 17);
+            this.StatusLabel4.Size = new System.Drawing.Size(78, 32);
             this.StatusLabel4.Text = "Zoom";
             this.StatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -295,13 +327,13 @@ namespace AcornPad.Forms
             this.transformToolStripMenuItem});
             this.editToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(252, 6);
             // 
             // transformToolStripMenuItem
             // 
@@ -314,7 +346,7 @@ namespace AcornPad.Forms
             this.ShiftUpToolStripMenuItem,
             this.ShiftDownToolStripMenuItem});
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(255, 44);
             this.transformToolStripMenuItem.Text = "Transform";
             // 
             // FlipHorizontalToolStripMenuItem
@@ -322,7 +354,7 @@ namespace AcornPad.Forms
             this.FlipHorizontalToolStripMenuItem.Image = global::AcornPad.Properties.Resources.FlipHorizontal;
             this.FlipHorizontalToolStripMenuItem.Name = "FlipHorizontalToolStripMenuItem";
             this.FlipHorizontalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
-            this.FlipHorizontalToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.FlipHorizontalToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.FlipHorizontalToolStripMenuItem.Text = "Flip Horizontal";
             this.FlipHorizontalToolStripMenuItem.Click += new System.EventHandler(this.FlipHorizontalToolStripMenuItem_Click);
             // 
@@ -331,14 +363,14 @@ namespace AcornPad.Forms
             this.FlipVerticalToolStripMenuItem.Image = global::AcornPad.Properties.Resources.FlipVertical;
             this.FlipVerticalToolStripMenuItem.Name = "FlipVerticalToolStripMenuItem";
             this.FlipVerticalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
-            this.FlipVerticalToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.FlipVerticalToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.FlipVerticalToolStripMenuItem.Text = "Flip Vertical";
             this.FlipVerticalToolStripMenuItem.Click += new System.EventHandler(this.FlipVerticalToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(439, 6);
             // 
             // ShiftLeftToolStripMenuItem
             // 
@@ -346,7 +378,7 @@ namespace AcornPad.Forms
             this.ShiftLeftToolStripMenuItem.Name = "ShiftLeftToolStripMenuItem";
             this.ShiftLeftToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Left)));
-            this.ShiftLeftToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.ShiftLeftToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.ShiftLeftToolStripMenuItem.Text = "Shift Left";
             this.ShiftLeftToolStripMenuItem.Click += new System.EventHandler(this.ShiftLeftToolStripMenuItem_Click);
             // 
@@ -356,7 +388,7 @@ namespace AcornPad.Forms
             this.ShiftRightToolStripMenuItem.Name = "ShiftRightToolStripMenuItem";
             this.ShiftRightToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Right)));
-            this.ShiftRightToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.ShiftRightToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.ShiftRightToolStripMenuItem.Text = "Shift Right";
             this.ShiftRightToolStripMenuItem.Click += new System.EventHandler(this.ShiftRightToolStripMenuItem_Click);
             // 
@@ -366,7 +398,7 @@ namespace AcornPad.Forms
             this.ShiftUpToolStripMenuItem.Name = "ShiftUpToolStripMenuItem";
             this.ShiftUpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Up)));
-            this.ShiftUpToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.ShiftUpToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.ShiftUpToolStripMenuItem.Text = "Shift Up";
             this.ShiftUpToolStripMenuItem.Click += new System.EventHandler(this.ShiftUpToolStripMenuItem_Click);
             // 
@@ -376,7 +408,7 @@ namespace AcornPad.Forms
             this.ShiftDownToolStripMenuItem.Name = "ShiftDownToolStripMenuItem";
             this.ShiftDownToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Down)));
-            this.ShiftDownToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.ShiftDownToolStripMenuItem.Size = new System.Drawing.Size(442, 44);
             this.ShiftDownToolStripMenuItem.Text = "Shift Down";
             this.ShiftDownToolStripMenuItem.Click += new System.EventHandler(this.ShiftDownToolStripMenuItem_Click);
             // 
@@ -391,24 +423,25 @@ namespace AcornPad.Forms
             this.ImageBox1.Image = null;
             this.ImageBox1.ImageRect = new System.Drawing.Rectangle(0, 0, 192, 192);
             this.ImageBox1.ImageSize = new System.Drawing.Size(20, 32);
-            this.ImageBox1.Location = new System.Drawing.Point(0, 25);
+            this.ImageBox1.Location = new System.Drawing.Point(0, 42);
             this.ImageBox1.Name = "ImageBox1";
             this.ImageBox1.PaintTool = 0;
             this.ImageBox1.PixelFormatString = null;
             this.ImageBox1.PixelSize = 1;
             this.ImageBox1.ShowGrid = true;
             this.ImageBox1.ShowTileGrid = false;
-            this.ImageBox1.Size = new System.Drawing.Size(584, 314);
+            this.ImageBox1.Size = new System.Drawing.Size(1367, 550);
             this.ImageBox1.TabIndex = 6;
             this.ImageBox1.Text = "imageBox1";
             this.ImageBox1.ZoomFactor = 2;
+            this.ImageBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageBox1_Paint);
             this.ImageBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseDown);
             this.ImageBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseMove);
             this.ImageBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ImageBox1_MouseUp);
             // 
             // MapEdit
             // 
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(1367, 634);
             this.Controls.Add(this.ImageBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -470,5 +503,8 @@ namespace AcornPad.Forms
         private WindowsFormsApp1.Controls.ToolStripNumericTextBox toolStripNumericTextBox1;
         private WindowsFormsApp1.Controls.ToolStripNumericTextBox toolStripNumericTextBox2;
         private WindowsFormsApp1.Controls.ToolStripNumericTextBox toolStripNumericTextBox3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton ButtonIncrease;
+        private System.Windows.Forms.ToolStripButton ButtonDecrease;
     }
 }

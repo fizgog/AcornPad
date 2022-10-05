@@ -424,6 +424,29 @@ namespace AcornPad
         }
 
         /// <summary>
+        /// Shift Image Left
+        /// </summary>
+        /// <param name="offset"></param>
+        public void ShiftLeft(int offset)
+        {
+            ImageData clonedImage = (ImageData)Clone();
+
+            int index = 0;
+            for (int y = 0; y < Height; y++)
+            {
+                index += offset;
+                for (int x = offset + 1; x <= Width; x++)
+                {
+                    int x2 = (x % Width);
+
+                    if (x2 < offset) x2 += offset;
+
+                    Data[index++] = clonedImage.Data[y * Width + x2];
+                }
+            }
+        }
+
+        /// <summary>
         /// Shift Image Right
         /// </summary>
         public void ShiftRight()
@@ -436,6 +459,30 @@ namespace AcornPad
                 for (int x = 0; x < Width; x++)
                 {
                     Data[index++] = clonedImage.Data[y * Width + ((Width - 1 + x) % Width)];
+                }
+            }
+        }
+
+        /// <summary>
+        /// Shift Image Right
+        /// </summary>
+        /// <param name="offset"></param>
+        public void ShiftRight(int offset)
+        {
+            ImageData clonedImage = (ImageData)Clone();
+
+            int index = 0;
+
+            for (int y = 0; y < Height; y++)
+            {
+                index += offset;
+                for (int x = offset; x < Width; x++)
+                {
+                    int x2 = (Width - 1 + x - offset) % Width;
+
+                    if (x2 < Width - offset) x2 += offset;
+
+                    Data[index++] = clonedImage.Data[y * Width + x2];
                 }
             }
         }
@@ -458,6 +505,30 @@ namespace AcornPad
         }
 
         /// <summary>
+        /// Shift Image Up
+        /// </summary>
+        /// <param name="offset"></param>
+        public void ShiftUp(int offset)
+        {
+            ImageData clonedImage = (ImageData)Clone();
+
+            int index = offset * Width;
+
+            for (int y = offset + 1; y <= Height; y++)
+            {
+                int y2 = y % Height;
+
+                if (y2 < offset) y2 += offset;
+
+                for (int x = 0; x < Width; x++)
+                {
+                    //Data[index++] = clonedImage.Data[(y % Height) * Width + x];
+                    Data[index++] = clonedImage.Data[y2 * Width + x];
+                }
+            }
+        }
+
+        /// <summary>
         /// Shift Image Down
         /// </summary>
         public void ShiftDown()
@@ -475,26 +546,66 @@ namespace AcornPad
         }
 
         /// <summary>
+        /// Shift Image Down
+        /// </summary>
+        /// <param name="offset"></param>
+        public void ShiftDown(int offset)
+        {
+            ImageData clonedImage = (ImageData)Clone();
+
+            int index = offset * Width;
+
+            for (int y = offset; y < Height; y++)
+            {
+                int y2 = (Height - 1 + y - offset) % Height;
+
+                if (y2 < Height - offset) y2 += offset;
+
+                for (int x = 0; x < Width; x++)
+                {
+                    Data[index++] = clonedImage.Data[y2 * Width + x];
+                }
+            }
+        }
+
+        /// <summary>
         ///
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="row"></param>
         public void InsertRow(int row)
         {
-            // Clone existing image data
-            //ImageData clonedImage = (ImageData)Clone();
+            Resize(Width, Height + 1);
+            ShiftDown(row);
+        }
 
-            //Initialize(clonedImage.Name, Width, Height + 1);
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="row"></param>
+        public void DeleteRow(int row)
+        {
+            ShiftUp(row);
+            Resize(Width, Height - 1);
+        }
 
-            //for (int y = 0; y < Height; y++)
-            //{
-            //    for (int x = 0; x < Width && x < clonedImage.Width; x++)
-            //    {
-            //        int index = y * clonedImage.Width + x;
-            //        int index2 = y * Width + x;
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="col"></param>
+        public void InsertColumn(int col)
+        {
+            Resize(Width + 1, Height);
+            ShiftRight(col);
+        }
 
-            //        Data[index2] = clonedImage.Data[index];
-            //    }
-            //}
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="col"></param>
+        public void DeleteColumn(int col)
+        {
+            ShiftLeft(col);
+            Resize(Width - 1, Height);
         }
     }
 }

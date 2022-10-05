@@ -257,7 +257,7 @@ namespace AcornPad.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffer"></param>
         public void Load(MachineType machineType, Machine machine, Palette palette, byte[] buffer)
@@ -269,16 +269,16 @@ namespace AcornPad.Controls
             int ny = 0;
 
             int width = machine.Width;
-            int height = (buffer.Length / width) * machine.PixelsBerByte; 
+            int height = (buffer.Length / width) * machine.PixelsBerByte;
 
             int columns = width / machine.PixelsBerByte;
             int rows = (buffer.Length / bytes) / columns;
 
             Bitmap canvas = new Bitmap(width, height);
-           
+
             int address = 0;
 
-            for(int k = 0; k < rows; k++)
+            for (int k = 0; k < rows; k++)
             {
                 for (int j = 0; j < columns; j++)
                 {
@@ -291,7 +291,7 @@ namespace AcornPad.Controls
                         // TODO Maybe add other machine types such as ZX Spetrum , Commodore 64 etc
                         switch (machineType)
                         {
-                            case MachineType.Atom :
+                            case MachineType.Atom:
                                 bitsArray = Sys.Unpack_Atom_Byte(machine.BitsPerPixel, pixel);
                                 break;
 
@@ -352,6 +352,34 @@ namespace AcornPad.Controls
                     Rectangle rect = new Rectangle(x, y, GridXOffset, GridYOffset);
                     gfx.DrawRectangle(pen, rect);
                 }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xPos"></param>
+        /// <param name="yPos"></param>
+        /// <param name="gfx"></param>
+        public void PaintCrossSelector(int xPos, int yPos, Graphics gfx)
+        {
+            int GridXOffset = GridSize.Width * ZoomFactor;
+            int GridYOffset = GridSize.Height * ZoomFactor;
+
+            int colWidth = (ImageRect.Width / GridXOffset);
+
+            if (colWidth != 0)
+            {
+                int x = xPos * GridXOffset;
+                int y = yPos * GridYOffset;
+             
+                Color cross = (Color)Properties.Settings.Default["Map_Cross_Selector_3"];
+
+                Rectangle rect1 = new Rectangle(x, 0, GridXOffset, ImageRect.Height);
+                gfx.DrawRectangle(new Pen(cross, 1), rect1);
+
+                Rectangle rect2 = new Rectangle(0, y, ImageRect.Width, GridYOffset);
+                gfx.DrawRectangle(new Pen(cross, 1), rect2);
             }
         }
 
@@ -631,7 +659,7 @@ namespace AcornPad.Controls
         private int PaintTile(int startIndex, int item, int stride, byte[] rgbValues)
         {
             int nextCell = startIndex + (Project.Tiles.Width * Project.Chars.Width * 4 * PixelSize);
-           
+
             for (int y = 0; y < Project.Tiles.Height; y++)
             {
                 int curOffset = startIndex + (y * Project.Chars.Width * stride);

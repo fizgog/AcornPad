@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="890896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AcornPad.exe" size="893456">
       <assemblyIdentity name="AcornPad" version="1.0.8.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9saf5m98jh0C/tFlHE0BRHbu+srxp0jBCunU9M5WBo8=</dsig:DigestValue>
+        <dsig:DigestValue>WX3jFf/vTtF0s+wQ0a5YBVGflhaN5lqR75mk+sqeqR8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

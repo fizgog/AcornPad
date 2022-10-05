@@ -51,7 +51,7 @@ namespace AcornPad
 
         public void ApplySettings()
         {
-            if ((bool)Properties.Settings.Default["AcornPad_Backdrop_1"])
+            if ((bool)Properties.Settings.Default["AcornPad_Backdrop__1"])
             {
                 BackgroundImage = Properties.Resources.AcornBackdrop;
             }
@@ -975,17 +975,17 @@ namespace AcornPad
         /// <param name="rtb"></param>
         private void ExportCharSet(AcornPad.Controls.RichTextBox rtb)
         {
-            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format_1"];
-            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion_2"];
-            bool comments = (bool)Properties.Settings.Default["Options_Comments_3"];
+            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format__1"];
+            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion__2"];
+            bool comments = (bool)Properties.Settings.Default["Options_Comments__3"];
 
             int digits = 3;
-            string charName = (string)Properties.Settings.Default["Character_Name_1"];
-            LayoutType layout = (LayoutType)Properties.Settings.Default["Character_Layout_2"];
+            string charName = (string)Properties.Settings.Default["Character_Name__1"];
+            LayoutType layout = (LayoutType)Properties.Settings.Default["Character_Layout__2"];
 
             string layoutPrefix = layout.ToString();
-            bool addPrefix = (bool)Properties.Settings.Default["Character_Prefix_3"];
-            int columns = (int)Properties.Settings.Default["Character_Columns_4"];
+            bool addPrefix = (bool)Properties.Settings.Default["Character_Prefix__3"];
+            int columns = (int)Properties.Settings.Default["Character_Columns__4"];
 
             charName = addPrefix ? layoutPrefix + "" + charName : charName;
 
@@ -1039,10 +1039,10 @@ namespace AcornPad
         /// <param name="rtb"></param>
         private void ExportTileSet(AcornPad.Controls.RichTextBox rtb)
         {
-            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format_1"];
-            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion_2"];
-            bool comments = (bool)Properties.Settings.Default["Options_Comments_3"];
-            decimal columns = (decimal)Properties.Settings.Default["Tile_Columns_1"];
+            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format__1"];
+            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion__2"];
+            bool comments = (bool)Properties.Settings.Default["Options_Comments__3"];
+            decimal columns = (decimal)Properties.Settings.Default["Tile_Columns__1"];
 
             rtb.AppendText("; Tileset data...");
             rtb.AppendText(Environment.NewLine);
@@ -1106,14 +1106,14 @@ namespace AcornPad
         /// <param name="filename"></param>
         private void ExportMapSet(AcornPad.Controls.RichTextBox rtb)
         {
-            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format_1"];
-            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion_2"];
-            bool comments = (bool)Properties.Settings.Default["Options_Comments_3"];
+            ExportFormatType format = (ExportFormatType)Properties.Settings.Default["Options_Format__1"];
+            ConversionType conversion = (ConversionType)Properties.Settings.Default["Options_Conversion__2"];
+            bool comments = (bool)Properties.Settings.Default["Options_Comments__3"];
 
             int digits = 3;
-            CompressionType compressionType = (CompressionType)Properties.Settings.Default["Map_Compression_1"];
+            CompressionType compressionType = (CompressionType)Properties.Settings.Default["Map_Compression__1"];
 
-            decimal columns = (decimal)Properties.Settings.Default["Map_Columns_2"];
+            decimal columns = (decimal)Properties.Settings.Default["Map_Columns__2"];
 
             //bool compression = compressionType != CompressionType.None;
 
