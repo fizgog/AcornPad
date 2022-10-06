@@ -4,6 +4,17 @@ Windows character, tile and map editor for the Acorn Atom and BBC Micro, based f
 
 <img src="Images/AcornPad.png" alt="AcornPad"/>
 
+<h2>Version 1.09 Release</h2>
+<h3>New</h3>
+<p>Added colour picker to the character editor</p>
+<p>Added increase and decrease icons to the map editor for adding or deleting rows and columns</p>
+<p>Added undo / redo for adding an deleting rows and columns</p>
+<p>Added user-defined character left and right selector colour choice</p>
+<p>Added user-defined tile left and right selector colour choice</p>
+<p>Added user-defined map cross selector colour</p>
+<h3>Fixes</h3>
+<p>Fixed tile selector size</p>
+
 <h2>Version 1.08 Release</h2>
 <h3>New</h3>
 <p>Added Import from File (searches for .byte and EQUB values)</p>
