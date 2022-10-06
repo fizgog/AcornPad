@@ -6,7 +6,7 @@ Windows character, tile and map editor for the Acorn Atom and BBC Micro, based f
 
 <h2>Version 1.09 Release</h2>
 <h3>New</h3>
-<p>Added colour picker to the character editor</p>
+<p>Added colour picker to the character editor (left click) draw colour (right click) erase colour</p>
 <p>Added increase and decrease icons to the map editor for adding or deleting rows (left click) and columns (right click)</p>
 <p>Added undo / redo for adding an deleting rows and columns</p>
 <p>Added user-defined character left and right selector colour choice</p>
